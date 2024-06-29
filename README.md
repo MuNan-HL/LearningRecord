@@ -1,20 +1,20 @@
 # README
 
 ``` md
-# 想想你要做什么？
+# 提示1 想想你要做什么？
 ```
 
 ``` md
-# 本文使用的 Markdown 模板
+# 提示2 本文使用的 Markdown 模板
 ```
 -  [Markdown_笔记模板](Markdown_笔记模板.md)
 
 ``` md
-# 快捷键 ctrl + shift + v 进入_markdown_文件预览模式
+# 提示3 快捷键 ctrl + shift + v 进入_markdown_文件预览模式
 ```
 
 ``` md
-# 推荐阅读顺序
+# 提示4 推荐阅读顺序
   1. [学习软件工程](A-软件工程.md)
 
   2. [学习前端开发](前端开发.md)
