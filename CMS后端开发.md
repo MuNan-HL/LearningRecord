@@ -26,6 +26,7 @@
 
 > 4. 
 ```
+- [参考资料 文档的 URL](https://doc.cms.talelin.com/server/spring-boot/standard.html#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84)
 
 # CMS 后端开发遇到的问题与解决措施
 ``` md
@@ -121,6 +122,7 @@
 
 > 2. 
 ```
+- [参考资料 XML](https://aws.amazon.com/cn/what-is/xml/)
 
 ``` md
 ## 为什么使用 XML？
