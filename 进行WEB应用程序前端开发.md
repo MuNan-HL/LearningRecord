@@ -1,0 +1,1890 @@
+[上一页 README](README.md)
+
+# 进行 WEB前端开发
+## 进行 Web应用程序 前端开发你需要掌握那些技术栈
+``` md
+> 1. HTML（超文本标记语言）读音： /haɪ/t/mɑ/l/
+
+> 2. JavaScript（脚本语言）读音： /dʒɑ/s/
+
+> 3. CSS（层叠样式表）读音： /kæ/s/ʃi/(ʃi 不发音)
+
+> 4. Vue（Web 应用程序前端框架）读音： /v/u/e/
+
+> 5. Vuex（Vue 框架的状态管理仓库）读音： /v/u/e/kˈs/
+
+> 6. Vue-router（Vue 框架的路由）
+
+> 7. axios（异步网络请求库）
+
+> 8. ajax（异步网络请求技术）读音： /ə/dʒæ/kˈs/
+
+> 9. HTTP（超文本传输协议）读音： /haɪ/t/træ/p/
+
+> 10. XHR（XMLHTTPRequest 对象）读音： ekˈs/haɪ/rɪ/
+
+> 11. nodejs（JS 运行环境）读音： /nəʊd/dʒɑ/s/
+
+> 12. UML 组件图 读音： /u/mɑ/l/
+
+> 13. Git（分布式版本控制工具）读音：/gi/t/
+
+> 14. VSCode（代码编辑器）读音： /v/s/code/
+
+> 15. GitHub（远程仓库）
+
+> 16. 开发者工具（浏览器开发者模式）
+
+> 17. 设计模式
+
+> 18. ES 6（ECMAScript 语言规范）读音： /ei/s/6/
+
+> 19. GUI(渲染器引擎) 读音: /ɡ/u/ɪ/
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+## JavaScript 相关问题
+- [参考资料1 面试](https://www.arryblog.com/interview/js/#%E6%95%B0%E7%BB%84)
+
+- [参考资料2 面试](https://github.com/mqyqingfeng/Blog)
+
+- [参考资料3 面试](https://vue3js.cn/interview/)
+``` js
+> 1. JS 如何获取时间戳？ 
+- let timestamp=new Date().getTime(); //1610075969354 
+
+- let timestamp = Date.parse(new Date()); //1610075969000 
+
+- let timestamp = (new Date()).valueOf(); //1610075969354 
+```
+- [参考资料 时间戳](https://blog.csdn.net/qq_30671099/article/details/112363421)
+
+``` js
+> 2. JS 中的 Date 日期类的语法？
+- 由于 JS 是一个动态语言，所以声明数据类型的关键字只有 const(常量)、let(变量)、var(不建议)
+
+- 声明一个日期对象 const aDate = new Date(); // 接受传参，传参不同日期类的构造函数的返回值不同。
+
+- 实例化 日期 对象，new Date();
+
+- 调用日期对象的方法如下：
+
+- 获取时间戳：aDate.now();
+```
+- [参考资料 Date 类](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/Date)
+
+``` md
+> 3. JS 是什么？ 
+- 是一种高级编程语言。
+```
+
+``` md
+> 4. JS 有哪些数据类型，如何判断这些数据类型 ？
+- 7 种基本数据类型：字符串类型、数字类型、布尔类型、未定义类型、空类型、符号类型、数值类型 
+
+- 引用数据类型：对象、数组、函数、日期等
+
+- 4 种判断数据类型的方法：typeof（适用于基本数据类型）、instanceof（适用于引用数据类型）、constructor、Object.prototype.toString.call()
+```
+- [参考资料 JS 有哪些数据类型，如何判断这些数据类型](https://www.arryblog.com/interview/js/js-data-type.html)
+
+``` md
+> 5. JS 中 null 和 undefined 的区别 ？
+- undefined（未定义）：7 种基本数据类型种的未定义，表示已声明但是为赋值。
+
+- null（空）：7 种基本数据类型中的为空，表示对一个空对象的引用。
+```
+
+``` md
+> 6. JS 中 基本数据类型和引用数据类型的区别？
+- 基本数据类型 表示一种既非对象也无方法或属性的数据。其本身是存储在 栈内存之中，且不可被修改的。需要注意的是，基本数据类型不可以被修改，但是存储了基本数据类型的变量是可以被修改的。
+
+- 引用数据类型 表示一组属性的集合。属性分为 数据属性 和 访问器属性。其中 数据属性 是将键与值相关联。访问器属性 是将 键 和 get、set 两个访问器相关联。
+
+- **数据存放位置不同**，前者在栈中，后者在堆中
+
+- **变量存储的内容不同**，基本数据类型是对值本身进行存储，引用数据类型是对引用地址（也即堆地址）进行存储。
+
+- 变量用来赋值时，都是对变量存储的内容进行复制。
+
+- 存储内容的大小比较，基本数据类型一般小于引用数据类型。
+```
+
+``` md
+> 7. JS 中 的栈内存和堆内存的比较？
+- **大小是否固定**，栈内存在创建时，大小已经固定，因此存在溢出。堆内存大小不固定。
+
+- **存储的数据类型**，栈内存存储基本数据类型以及堆地址，堆内存存储引用数据类型。
+
+- **访问方式**，栈内存是按值本身进行访问，堆内存是按堆地址进行访问。
+
+- **运行效率**，栈内存存储空间小，运行效率相较而言高；堆内存，存储存储空间大，运行效率相较而言低。
+
+- **存放规则**，栈内存，先进后出；堆内存无序存放。
+```
+``` md
+> 7. JS 中 的 栈内存 和 堆内存 的区别？
+- 1. 栈内存 和 堆内存 都是 JS 中用于 内存管理 的机制.
+
+- 2. 栈内存 和 堆内存 的区别在于, 
+- 第一是, **存储的数据类型不同**, 栈内存 用来存储基本数据类型的变量以及引用数据类型变量的引用地址. 而 堆内存 则用来存储引用数据类型的变量.
+
+<!-- - 第二是, **垃圾回收的策略不同**, 栈内存 中的数据, 和当前的执行上下文相关, 而 堆内存 中的数据, 则是和 变量的引用数有关. --> 垃圾回收的策略是相同的, 即引用数 为0 时立即进行垃圾回收.
+
+- 第二是, **内存分配的策略不同**, 栈内存 为系统自动分配, 自动释放, 且大小固定; 堆内存 为开发人员 手动分配, 系统不会自动释放, 且 大小不定. 
+
+- 注意1: 常量是存储在 (常量)池中的.
+
+- 注意2: 闭包中的变量, 存储在 堆内存 中. 即使该变量是基本数据类型的变量.
+```
+- [参考资料 栈内存 和 堆内存](https://juejin.cn/post/6844903873992196110#heading-11)
+
+- [参考资料 栈 和 堆](https://wuch886.gitbooks.io/front-end-handbook/content/jszhong-de-nei-cun-guan-li-ff08-zhan-he-dui-ff09.html)
+
+``` md
+> 8. JS 中 typeof(NaN)返回结果？
+- NaN，是 not a number 不是一个数，所以 typeof(NaN) 返回结果为基本数据类型，数字类型。
+
+- 注意：不是一个数，不代表不可以是数字类型。**数和数字类型不要弄混了**。
+```
+
+``` js
+> 9. JS 中 如何判断一个变量的值是 NaN ?
+- isNaN(a) && typeof a === "number";
+```
+
+``` md
+> 10. JS 中 typeof 能判断那些类型 ？
+- typeof 判断基本数据类型时，除了 null 的输出结果为'object' 其它类型都能正确判断
+
+- typeof 判断引用数据类型时，除了判断函数会输出'function' 其它都输出'object'
+```
+
+``` md
+> 11. JS 中 typeof(null) 为什么返回的是'object' ?
+- 和 JS 实现数据类型判断的机制有关，JS 的数据类型判断本质是通过数据转换为二进制后，位数的前三位进行判断的，用前三位为 000 表示 引用数据类型，而 null 为全 0，因此产生了 typeof(null) 的返回的是 'object' 的问题。
+```
+
+``` md
+> 12. JS 中 == 和 === 的区别 ？
+- == 表示会先比较数据类型是否相等，相等则对变量存储的内容进行比较，不想等则会进行隐式数据类型转换，然后在比较变量存储的内容是否相对。
+
+- === 表示会先比较数据类型是否相等，相等则对变量存储的内容进行比较，不相等，则直接返回 false。
+```
+
+``` md
+> 13. JS 中什么是变量提升 ？
+- JS 中什么是变量提升，表示 JS 代码在执行之前，会自动将 var 声明的变量提升至其作用域的顶部。 
+
+- JS 中通过 var 关键字定义的变量，会在程序执行的前，自动提升到当前作用域的前面。
+
+- 注意1：只是进行变量提升，而不是初始化提升。
+
+- 注意2：JS 中存在 函数提升，且 优先级 高于 变量提升。所以如果出现了重名的变量和函数，声明提升时会以函数为主。因此请遵守命名规范。
+```
+
+``` md
+> 14. const、let、var 的区别？
+- const 用于定义常量，let 用于定义 变量，var 也用于定义 变量。
+
+- 常量 和 变量 的区别，常量表示不可修改，变量表示可以修改。需要注意的是，此处的是否可以修改是指对栈内存的修改。
+
+- var 存在 变量提升，但是 const 和 let 不存在，因此 const 和 let 会存在暂时性死区。
+
+- 还有就是 const 和 let 是存在块级作用域的。
+
+- 推荐使用方法，const 用于定义常量和引用数据类型，其他时候推荐使用 let。需要注意，var 是不被推荐的。
+```
+
+``` md
+> 15. JS 中的 垃圾回收机制是什么？
+- JS 中的垃圾回收策略分为 标记清除策略 和 引用计数策略 两种。
+
+- 标记清理策略，表示的是，给每一个变量加上存在上下文的标记，如果没有该标记，则垃圾回收器会回收该变量的内存，反之不会。
+
+- 引用计数策略，表示的是，给每一个变量加上引用数，如果引用数为 0，则垃圾回收器就会 **立刻** 回收该变量的内存。
+```
+- [参考资料 垃圾回收策略](https://www.arryblog.com/interview/js/js-closure-scope.html)
+
+``` md
+> 16. JS 中的 闭包里面的变量为什么不会被垃圾回收？
+- JS 中的 闭包函数，表示的是，**能够访问其他函数内部变量的函数。**
+
+- 闭包函数示例如下：f2() 函数可以读取 f1() 函数中的变量，因此 f2() 函数就是 f1() 函数的 闭包函数。
+```
+![闭包示意图](image-19.png)
+``` js
+　　function f1(){
+
+　　　　let n=999;
+
+　　　　function f2(){
+　　　　　　alert(n);
+　　　　}
+
+　　　　return f2;
+
+　　}
+
+　　let result=f1();
+
+　　result(); // 999
+```
+- [参考资料 闭包](https://www.arryblog.com/interview/js/js-closure-scope.html)
+
+- [参考资料 闭包的记忆性](https://www.arryblog.com/interview/js/%E9%97%AD%E5%8C%85.html#_6%E3%80%81%E4%BD%BF%E7%94%A8%E9%97%AD%E5%8C%85%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9-%E7%BC%BA%E7%82%B9%E6%88%96%E5%8D%B1%E5%AE%B3)
+
+``` md
+> 17. JS 中的 this 指向是什么？ 
+- JS 中的 this，会指向当前的调用者。
+
+- 注意1：全局作用域下，this 指向 window 对象。
+
+- 你清楚下面代码的返回值吗？
+
+- 解题思路：
+  1 函数中的this指的是调用这个函数的owner
+
+  2 object.getNameFunc()是返回一个函数，并没有执行函数中的代码
+```
+``` js
+- 代码片段1：
+    let name = "The Window";
+
+　  let object = {
+　　　　name : "My Object",
+
+　　　　getNameFunc : function(){
+　　　　　　return function(){
+　　　　　　　　return this.name;
+　　　　　　};
+
+　　　　}
+
+　　};
+
+　　alert(object.getNameFunc()());
+
+- 代码片段2：
+　　let name = "The Window";
+
+　　let object = {
+　　　　name : "My Object",
+
+　　　　getNameFunc : function(){
+　　　　　　let that = this;
+　　　　　　return function(){
+　　　　　　　　return that.name;
+　　　　　　};
+
+　　　　}
+
+　　};
+
+　　alert(object.getNameFunc()());
+```
+- [参考资料 闭包 和 this 指向](https://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)
+
+``` md
+> 18. 说说 JS 作用域及作用域链
+- JS 中的作用域，表示的是，JS 中的 **代码的执行环境**。执行环境定义了变量和函数的访问权限。同时每一个执行环境都关联着一个变量对象，在执行环境中定义的变量和函数都存储在这个对象中。例如，全局执行环境的中的变量对象就是 window 对象。而 nodejs 中的全局执行环境关联的变量对象是 global 对象。
+
+- JS 中的作用域链，表示的是 执行环境栈 中的 变量对象所形成的一条链。
+
+- 注意 作用域链的查找策略：内部环境可以通过作用域链访问所有外部环境，但外部环境不能访问内部环境的任何变量和函数。
+
+- 注意 作用域链：JS 中的 作用域链 不止一条。每一个函数都有一条自己的作用域链，且在 函数定义阶段 以及存在。因此 JS 的代码执行顺序，需要清除每个函数的作用域链。
+```
+
+``` md
+> 19. JS 中的 执行流策略是什么?
+- JS 中，每一个函数都有自己的执行环境，当执行流进入一个函数时，函数的执行环境才会被压入执行环境栈中。当函数执行完毕后，会被弹出执行环境栈。并把控制权返回给上一个执行环境。
+
+- 注意 变量提升 和 函数提升 策略。
+
+- 因此可以得出，JS 中 函数的作用域链查找顺序，由 执行环境栈决定。
+```
+
+``` md
+> 20. JS 中的作用域分类是什么？
+- 全局作用域，与之管理的变量对象为 window 对象。
+
+- 函数作用域，与之管理的变量对象为，视情况而定。
+
+- 块级作用域，与之管理的变量对象为，视情况而定。
+
+- 注意1：只有 let 和 const 声明的变量才具有 块级作用域。只是单纯的 {} 是不存在块级作用域的。
+```
+
+``` md
+> 21. 怎么理解 JS 静态作用域和动态作用域？
+- 静态作用域，也即词法作用域，表示的是，函数作用域链在函数定义阶段以及被确定了。也即在函数定义阶段，JS 中的 作用域链（执行环境栈）以及确定了。
+
+- 动态作用域，表示的是，函数作用域在函数被调用时才被确定。
+
+- 注意 函数的作用域链查找顺序由函数的作用域链决定，代码的执行顺序是顺序执行的。不要和函数的作用域链查找顺序混淆。
+```
+- [参考资料 JS 函数的作用域链查找顺序](https://juejin.cn/post/7022537890114568205)
+
+``` md
+> 22. JS 中遍历对象的方法？
+- for in （不含 符号类型）**推荐**
+
+- Object.keys(obj) 搭配 forEach （不含 符号类型）
+
+- Reflect.ownKeys(obj) 搭配 forEach（包含 符号类型）
+```
+
+``` md
+> 23. JS 中遍历数组的方法？
+- forEach （不支持 break 跳出循环，只能通过 抛出异常的方式跳出循环。）**推荐**
+
+- for in（支持 break 跳出循环）
+
+- for of（支持 break 跳出循环）
+```
+- [参考资料 遍历对象和数组](https://www.cnblogs.com/yuer20180726/p/11377897.html)
+
+``` md
+> 24. JS 中 如何理解原型和原型链 ？
+- 原型，是因为 JS 是一门基于原型的编程语言。应用 原型模式 开发而来的语言。
+
+- JS 中的原型链，是指由 原型属性 连接而成 的一条链。
+
+- 原型链结构图如下：实例对象，原型对象，构造函数之间的关系
+```
+![原型链结构图](image-18.png)
+
+- [参考资料 原型链](https://www.arryblog.com/interview/js/js-prototype.html)
+
+``` md
+> 25. 原型链的终点是什么？
+- null
+```
+
+``` md
+> 26. 说说 [] 的原型链 ？
+```
+![[] 的原型链](image-17.png)
+
+``` md
+> 27. 什么是继承 ？
+- 继承，表示的是 两个类之间的关系。
+
+- 类之间的关系：父类和子类、基类和导出类 等
+```
+
+``` md
+> 27. JS 中如何实现继承 ？
+- ES6 之前：通过 原型链 的方法实现继承。
+
+- ES6 之后：class 关键字 和 extends 关键字
+```
+- [参考资料 JS 继承](https://www.arryblog.com/interview/js/%E7%BB%A7%E6%89%BF.html#_1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%A7%E6%89%BF)
+
+``` js
+> 28. JS 中 如何实现变量交换？
+> 借助数组实现
+let a = 1;
+let b = 2;
+
+a = [a, b]; // 让 a 变成数组
+b = a[0]; // 先取出 b
+a = a[1]; // 再覆盖 
+
+> 通过 ES6 的解构 **推荐**
+let a = 1;
+let b = 2;
+
+[a, b] = [b, a];
+
+> 借助对象实现
+let a = 1;
+let b = 2;
+
+a = { a: b, b: a };
+b = a.b;
+a = a.a;
+```
+- [参考资料 JS 实现变量交换](https://www.arryblog.com/interview/js/%E5%8F%98%E9%87%8F%E4%BA%A4%E6%8D%A2.html)
+
+``` js
+> 29. 反转数组最佳实践：如何在不改变原始数组的情况下反转数组
+> 使用切片和反向方法 **推荐**
+const originalArray = [1, 2, 3, 4, 5];
+const newArray = originalArray.slice().reverse(); // slice 切片一个数组将产生一个新副本
+
+console.log(originalArray); // [1, 2, 3, 4, 5]
+console.log(newArray); // [ 5, 4, 3, 2, 1]
+
+> 使用扩展和反向方法
+const originalArray = [1, 2, 3, 4, 5];
+const newArray = [...originalArray].reverse();
+
+console.log(originalArray); // [1, 2, 3, 4, 5]
+console.log(newArray); // [ 5, 4, 3, 2, 1]
+
+> 使用 reduce 和 spread 方法
+const originalArray = [1, 2, 3, 4, 5];
+const newArray = originalArray.reduce((accumulator, value) => {
+  return [value, ...accumulator];
+}, []);
+
+console.log(originalArray); // [1, 2, 3, 4, 5]
+console.log(newArray); // [ 5, 4, 3, 2, 1]
+
+- 其中 reduce 方法为遍历数组的方法之一，其接受一个回调函数和一个初始值。回调函数具有四个回调参数，
+- reduce((accumulator, currentValue, index, array)=>{},initialValue)
+```
+- [参考资料 反转数组](https://www.arryblog.com/interview/js/%E5%8F%8D%E8%BD%AC%E6%95%B0%E7%BB%84.html#_1%E3%80%81%E4%BD%BF%E7%94%A8%E5%88%87%E7%89%87%E5%92%8C%E5%8F%8D%E5%90%91%E6%96%B9%E6%B3%95)
+
+- [参考资料 reduce](https://www.freecodecamp.org/chinese/news/the-ultimate-guide-to-javascript-array-methods-reduce/)
+
+``` md
+> 30. JS 中 如何实现 对象或数组的深克隆？
+- 利用递归技巧。
+
+- 递归，表示的是一种函数自己调用自己，并在达到某个条件之后，停止调用的技巧。需要注意的是，进行递归要具有递归出口（也即边界条件）和递归体（决定了大问题是如何分解为小问题的）
+
+- 以数组为例：
+如果遍历到项是基本类型值，则直接推入结果数组；
+
+如果遍历到的项是又是数组，则重复执行深克隆的操作。
+
+以深克隆数组为例，代码如下：
+```
+``` js
+// 原数组
+let arr1 = [22, 11, 33, 55, [88, 66, [97, 61], 99]];
+
+// 函数，这个函数会被递归（暂时不考虑对象，等以后学习了再讲）
+function deepClone(arr) {
+  // 结果数组，”每一层“ 都有一个结果数组
+  let result = [];
+  // 遍历数组的每一项
+  for (let i = 0; i < arr.length; i++) {
+    // 类型判断，如果遍历到的项是数组
+    if (Array.isArray(arr[i])) {
+      // 递归
+      result.push(deepClone(arr[i]));
+    } else {
+      // 如果遍历到项不是数组，是基本类型值，就直接推入到结果数组中
+      // 相当于是递归的出口
+      result.push(arr[i]);
+    }
+  }
+  // 返回结果数组
+  return result;
+}
+
+// 测试一下
+let arr2 = deepClone(arr1);
+console.log(arr2);
+
+// 测试是否藕断丝连
+console.log(arr1[4] == arr2[4]); // false
+
+arr1[4].push(88888);
+console.log(arr2); // 数组的项没有被改变，深克隆成功
+
+// 再测试
+console.log(arr1[4][2] == arr2[4][2]);
+arr1[4][2].push(56789);
+console.log(arr1); // arr1被推入
+console.log(arr2); // arr2 没有被推入，深克隆成功
+```
+
+``` js
+> 31. JS 中使用递归计算前 n 项的斐波那契数列之和，斐波那契数列：1、1、2、3、5、8、13、21
+代码如下：
+// 编写一个函数，这个函数的功能是返回斐波那契数列中下标为n的那项的值
+function fib(n) {
+  // 递归出口
+  // 数列的下标为0的项和下标为1的项值是1
+  if (n == 0 || n == 1) return 1;
+
+  // 递归体
+  // 斐波那契数列的本质特征就是每一项，等于前面两项的和
+  return fib(n - 1) + fib(n - 2);
+}
+
+// 书写一个循环语句，计算斐波那契数列的前15项
+for (let i = 0; i < 15; i++) {
+  console.log(fib(i));
+}
+```
+
+``` js
+> 32. 如何阅读 JS 代码？
+- 代码翻译为汉语常用语：简单示例
+
+- 前提：首先进行准备工作，进行变量提升和函数提升，如果有的话。
+
+// 定义一个变量 a，其值为 1；
+let a = 1; 
+
+// 定义一个函数 addCount，其返回值为 一个函数
+function addCount() {
+  var count = 0;
+  return function () {
+    count = count + 1;
+    console.log(count);
+  };
+}
+
+// 定义一个变量 fun2，其值为立即执行 addCount() 函数后的返回值。 
+let fun2 = addCount();
+
+// 立即执行 fun2() 函数
+fun2(); // 1
+```
+
+``` md
+> 33. JS 中 如何进行防抖和节流设计？
+- 防抖：表示的是，多次触发同一事件，只会在最后一次触发后的 指定的等待时间后去执行指定函数。
+
+- 节流：表示的是，多次触发同一事件，在指定的等待时间内只会执行一次指定函数。
+
+- 实现方法：利用 定时器实现。
+```
+``` js
+// 防抖函数
+// 触发高频事件后一段时间（wait）只会执行一次函数，如果指定时间（wait）内高频事件再次被触发，则重新计算时间。
+function debounce(func, wait) {
+  let timeout = null;
+  return function () {
+    let context = this;
+    let args = arguments;
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(context, args);
+    }, wait);
+  };
+}
+
+// 节流函数
+// 规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效
+function throttle(func, wait) {
+  let timeout = null;
+  return function () {
+    let context = this;
+    let args = arguments;
+    if (!timeout) {
+      timeout = setTimeout(() => {
+        timeout = null;
+        func.apply(context, args);
+      }, wait);
+    }
+  };
+}
+```
+
+``` md
+> 34. number 类型表示整数的最大范围？
+- JavaScript 能够准确表示的整数范围在-2^53 到 2^53 之间（不含两个端点）。
+
+- 因此，当通过 JS 表示大整数的时候，建议通过 字符串 类型，进行传递，防止丢失精度。
+```
+- [参考资料 数字类型 所表示的范围](https://cloud.tencent.com/developer/article/1488194)
+
+``` md
+> 35. 闭包里面的变量为什么不会被回收？
+- 首先需要了解浏览器的垃圾回收策略，标记清除策略和引用计数策略。
+
+- 由于闭包本身的特点，闭包函数可以访问其他函数的内部变量，导致闭包函数和其他函数的内部变量一至存在引用关系，因此闭包里面的变量为什么不会被回收。
+```
+
+``` md
+> 36. es6 class 怎么设置原型、静态、实例方法？
+- 使用 class 关键字，extends 关键字
+
+- 了解什么是 实例方法和属性（实例对象 可以直接调用的方法和属性）、什么是 静态方法和属性（类 可以直接调用的方法和属性）
+
+- 了解 super() 是什么？（表示的是 子类 所继承的 父类）。
+```
+- [参考资料 ES6 定义类](https://blog.csdn.net/qq_51066068/article/details/124705885)
+
+``` md
+> 37. 你知道 JS 数组有哪些方法 ？
+> 尾端增删元素
+arr.push(...items) —— 从尾端添加元素，返回修改后的数组
+
+arr.pop() —— 从尾端提取元素，返回修改后的数组
+
+> 首端增删元素
+arr.shift() —— 从首端提取元素，返回修改后的数组
+
+arr.unshift(...items) —— 从首端添加元素。返回修改后的数组
+
+> 任意位置增删元素
+arr.splice(start[, deleteCount, elem1, ..., elemN]) —— 从 start 位置删除或添加元素，返回修改后的数组
+
+> 切片复制元素
+arr.slice([start], [end]) —— 复制 start 到 end 的元素，返回新的数组。注意：若未未串任何参数，则是返回数组的备份。
+
+> 合并数组
+arr.concat(arg1, arg2...)
+
+> 查找元素，并返回元素的索引
+arr.indexOf(item, from) —— 从索引 from 开始搜索 item，如果找到则返回索引，否则返回 -1。
+
+arr.includes(item, from) —— 从索引 from 开始搜索 item，如果找到则返回 true（译注：如果没找到，则返回 false）。
+
+> forEach 遍历
+arr.forEach((item, index, array)=>{
+  // ... do something with item
+});
+
+> find 遍历数组，返回第一个满足返回条件的元素
+let result = arr.find((item, index, array)=>{
+  // 如果返回 true，则返回 item 并停止迭代
+  // 对于假值（falsy）的情况，则返回 undefined
+
+  return 返回条件;
+});
+
+> filter 遍历数组，将所有满足条件的元素作为一个新数组并返回
+let results = arr.filter((item, index, array)=>{
+  // 如果 true item 被 push 到 results，迭代继续
+  // 如果什么都没找到，则返回空数组
+
+  return 返回条件;
+});
+
+> map 遍历数组，并将返回值作为一个新数组返回
+let result = arr.map((item, index, array)=>{
+  // 返回新值而不是当前元素
+
+  return 返回值;
+})
+
+> reduce 遍历数组，返回值由初始值决定，需要注意的是，initial 可以是对象，数组，数字，字符串等类型。
+let value = arr.reduce((accumulator, item, index, array) => {
+  // ...
+
+  return accumulator + item; 
+}, [initial]);
+
+> sort 原位排序（原位是指在此数组内，而非生成一个新数组。）
+arr.sort(callback)
+
+let arr = [ 1, 2, 15 ];
+
+// 该方法重新排列 arr 的内容
+arr.sort();
+
+alert( arr );  // 1, 15, 2
+
+需要注意的是：sort 默认是按照字符串排序的。因此需要按照数字排序，需要给 sort() 函数传一个回调函数。
+function compareNumeric(a, b) {
+  if (a > b) return 1;
+  if (a == b) return 0;
+  if (a < b) return -1;
+}
+
+let arr = [ 1, 2, 15 ];
+
+arr.sort(compareNumeric);
+<!-- 下面的也可以 -->
+arr.sort( (a, b) => a - b );
+
+alert(arr);  // 1, 2, 15
+
+<!-- 字符串原位排序 -->
+let countries = ['Österreich', 'Andorra', 'Vietnam'];
+
+alert( countries.sort( (a, b) => a > b ? 1 : -1) ); // Andorra, Vietnam, Österreich（错的）
+
+alert( countries.sort( (a, b) => a.localeCompare(b) ) ); // Andorra,Österreich,Vietnam（对的！）
+
+> reverse 原为逆序排序
+let arr = [1, 2, 3, 4, 5];
+arr.reverse();
+
+alert( arr ); // 5,4,3,2,1
+
+> split 和 join 实现数组和字符串的相互转换
+const arr = str.split(delim) —— 按照分隔符分割字符串，并返回一个数组
+
+const str = arr.join(delim) —— 按照分隔符拼接数组，并返回一个字符串
+
+> isArray 判断一个对象是否是数组
+alert(Array.isArray({})); // false
+
+alert(Array.isArray([])); // true
+```
+- [参考资料 JS 中的 数组方法](https://zh.javascript.info/array-methods)
+
+``` js
+> 38. 数组去重的方式有哪些？时间复杂度分别是多少？
+> O(n) 复杂度
+对象键值对法（可以对空对象进行去重）
+var arr = [1, "1", 'true', 'true', true, true, 15, 15, false, false, undefined, undefined, null, null, NaN, NaN, 'NaN', 0, 0, 'a', 'a', {}, {}];
+
+function unique(arr) {
+    var obj = {};
+    return arr.filter((item, index, arr) => {
+        return obj.hasOwnProperty(typeof item + item) ? false : (obj[typeof item + item] = true)
+    })
+}
+// 使用 typeof item + item 作为 键 的 原因：为了避免由于字符串所导致的去重过度的问题。
+// 我们会发现 1 和 "1" 是不同的，但是这种方法会判断为是同一个值，因为对象中的键只能是字符串，其余类型作为键会进行一个隐式转换。和 sort 排序时候的转换是一样的，可以通过 typeof item + item，拼成字符串作为 key 的值避免这个问题。
+
+Set 集合法（无法对空对象进行去重）
+function unique(array) {
+  return Array.from(new Set(array));
+}
+// Array.from() 支持类数组转换为数组。
+// Set 集合，集合中的元素是唯一的。
+
+或直接用一下方法
+[...new Set(array)]
+
+> O(n^2) 复杂度
+双重循环删除法（无法对空对象进行去重）
+var arr = [1, 1, 'true', 'true', true, true, 15, 15, false, false, undefined, undefined, null, null, NaN, NaN, 'NaN', 0, 0, 'a', 'a', {}, {}];
+for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] == arr[j]) {
+            arr.splice(j, 1);
+            j--;
+        }
+    }
+}
+console.log(arr.valueOf());//[1,'true', false,undefined, NaN, NaN,'NaN','a',{},{}]
+```
+- [参考资料 数组去重1](https://fyttto.github.io/2020/11/20/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/)
+
+- [参考资料 数组去重2](https://segmentfault.com/a/1190000019547180#item-8)
+
+- [参考资料 Set 集合](https://www.w3school.com.cn/js/js_object_sets.asp)
+
+- [参考资料 Set 集合 和 Map 映射](https://zh.javascript.info/map-set)
+
+``` md
+> 39. 将数组的length设置为 0，取第一个元素会返回什么？
+- 设置 length = 0 会清空数组，所以会返回 undefined。
+```
+
+``` js
+> 40. JS 中的 类数组对象是什么？
+- 具有数组的 长度 和 索引 属性的对象，但是没有数组的方法，被称作 类数组对象。
+
+- 类数组如何转换为数组？
+> ES6 方法
+Array.from(arrayLike);
+
+[...arrayLike];
+
+> 原型方法
+var arrayLike = {0: 'name', 1: 'age', 2: 'sex', length: 3 }
+// 1. slice
+Array.prototype.slice.call(arrayLike); // ["name", "age", "sex"] 
+// 2. splice
+Array.prototype.splice.call(arrayLike, 0); // ["name", "age", "sex"] 
+// 3. ES6 Array.from
+Array.from(arrayLike); // ["name", "age", "sex"] 
+// 4. apply
+Array.prototype.concat.apply([], arrayLike)
+```
+- [参考资料 类数组对象](https://github.com/mqyqingfeng/Blog/issues/14)
+
+``` md
+> 41. JS 中的 arguments 类数组，如何遍历类数组？
+- arguments 表示的是，一个函数的参数对象。
+
+- Arguments 对象的 callee 属性，通过它可以调用函数自身。
+```
+
+``` js
+> 42. JS 中 如何给函数添加属性？
+> 在 JS 中，因为 函数 本身就是一个对象，因此函数也具有属性。给函数添加属性的方法如下：
+
+> 具体方法参考 **JS 中怎么给对象添加新属性？**
+
+> 以匿名函数添加属性为例：
+// 阅读代码如下:
+// 首先，定义一个 data 数组
+var data = [];
+
+// 然后，执行 for 循环，循环执行三次
+for (var i = 0; i < 3; i++) {
+  // 然后，将匿名函数赋值给data[i]，并给匿名函数添加一个 i 属性，值为当前索引值。
+    (data[i] = function () {
+      // 然后，打印处当前函数的属性 i 
+      console.log(arguments.callee.i) 
+    }).i = i;
+}
+
+// 然后，立即执行 data[i] 函数
+data[0]();
+data[1]();
+data[2]();
+
+// 0
+// 1
+// 2
+```
+
+``` md
+> 43. JS 中怎么给对象添加新属性？
+- 在定义对象的时候添加
+
+- 通过 . 运算符实现
+
+- 通过 Reflect 对象的 set 方法。Reflect.set(obj, key, value); 实现。
+```
+
+``` md
+> 44. JS 异步处理发展史
+- 回调函数 ---> Promise ---> Generator ---> async/await.
+
+- 由此可见，异步发展的目标就是让异步逻辑的代码看起来像同步一样。
+
+> 注意1：同步（同步编程）（同步任务），就是在发出一个"调用"时，在没有得到结果之前，该“调用”就不返回。但是一旦调用返回，就得到返回值了。换句话说，就是由“调用者”主动等待这个“调用”的结果。此调用执行完之前，阻塞之后的代码执行。
+
+> 注意2：异步（异步编程）（异步任务），"调用"在发出之后，这个调用就直接返回了，所以没有得到返回结果。换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在"调用"发出后，"被调用者"通过状态、通知来通知调用者，或通过回调函数处理这个调用。异步调用发出后，不影响后面代码的执行。
+
+> 注意3：JS 中为什么要引入异步编程？
+- 首先我们知道JavaScript是单线程的(即使新增了webworker，但是本质上JS还是单线程)。**同步代码意味着什么呢？意味着有可能会阻塞**，当我们有一个任务需要时间较长时，如果使用同步方式，那么就会阻塞之后的代码执行。而异步则不会，我们不会等待异步代码的之后，继续执行异步任务之后的代码。
+```
+- [参考资料 异步编程](https://github.com/YvetteLau/Blog/issues/30)
+
+``` md
+> 45. 同步任务和异步任务区别？
+- 同步（同步编程）（同步任务），就是在发出一个"调用"时，在没有得到结果之前，该“调用”就不返回。但是一旦调用返回，就得到返回值了。换句话说，就是由“调用者”主动等待这个“调用”的结果。此调用执行完之前，阻塞之后的代码执行。
+
+- 异步（异步编程）（异步任务），"调用"在发出之后，这个调用就直接返回了，所以没有得到返回结果。换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在"调用"发出后，"被调用者"通过状态、通知来通知调用者，或通过回调函数处理这个调用。异步调用发出后，不影响后面代码的执行。
+```
+
+``` md
+> 46. JS 中的 执行栈的执行流程是什么？
+-  
+
+- 基本概念1：作用域，也即代码的执行环境；执行上下文，也即执行环境。
+
+- 基本概念2：同步任务，也即同步代码；异步任务，也即异步代码；异步任务分为微任务和宏任务；
+
+- 基本概念3：执行栈，它主要负责执行所有要执行的代码。需要执行时则入栈，执行完毕后则出栈。
+
+- 基本概念4：任务队列，它用来保存异步任务，遵循先进先出的原则。它主要负责将新的异步任务发送到队列中进行处理。
+
+- JavaScript在执行代码时，会将同步的代码按照顺序排在执行栈中，然后依次执行里面的函数。当遇到异步任务时，就将其放入任务队列中，等待当前执行栈所有同步代码执行完成之后，就会从异步任务队列中取出已完成的异步任务的回调并将其放入执行栈中继续执行，如此循环往复，直到执行完所有任务。
+
+- 浏览器执行流程总结：在执行栈中，会先执行同步任务，执行完接着执行微任务，最后执行宏任务。这个过程会不断重复。
+
+- 如下图：
+```
+![浏览器的JS 执行栈执行流程](image-20.png)
+``` js
+> JS 执行流程代码阅读
+// 执行（立刻执行） log 函数，打印出 "script start"
+console.log("script start");
+
+// 定义 一个异步函数 async1
+async function async1() {
+  // 立刻执行 async2 函数，然后将其后的代码作为微任务放入微任务队列中
+  await async2();
+  console.log("async1 end");
+}
+
+// 定义 一个异步函数 async2
+async function async2() {
+  console.log("async2 end");
+}
+
+// 执行（立刻执行）async1 函数
+async1();
+
+// 执行 setTime 函数，将匿名回调函数放入宏任务队列中
+setTimeout(function () {
+  console.log("setTimeout");
+}, 0);
+
+// 实例化 Promise 对象，执行 箭头函数
+new Promise((resolve) => {
+  // 执行 log 函数，打印处 "Promise" 
+  console.log("Promise");
+  // 执行 resolve 函数，将其后的代码，加入微任务队列中
+  resolve();
+})
+  .then(function () {
+    console.log("promise1");
+  })
+  .then(function () {
+    console.log("promise2");
+  });
+
+// 执行 log 函数，打印处 "script end"
+console.log("script end");
+
+// 此时执行栈中的同步任务执行完毕，开始从微任务队列中获取微任务，在执行栈中执行
+// 此时的微任务队列：
+console.log("async1 end");
+
+.then(function () {
+  console.log("promise1");
+})
+.then(function () {
+  console.log("promise2");
+});
+
+// 微任务队列执行完毕后，开始从宏任务队列获取宏任务，在执行栈中执行
+// 此时的宏任务队列：
+function () {
+  console.log("setTimeout");
+}
+
+// 最终打印出的结果： script start => async2 end => Promise => script end => async1 end=> promise1 => promise2 => setTimeout
+```
+- [参考资料 浏览器中 JS 的执行流程](https://www.cnblogs.com/songyao666/p/15405742.html)
+
+``` md
+> 47. JS 实现异步方法有哪些 ？
+- 见：JS 异步处理发展史
+```
+
+``` md
+> 48. 了解异步调用栈吗？
+- 即任务队列，也即浏览器的执行流程。
+
+- 见：浏览器中 JS 代码的执行流程是什么？
+```
+
+``` md
+> 49. 有了 promise 为什么还需要 async/await ？
+- 代码简洁 且 易于调试
+```
+
+``` md
+> 50. 说一下你了解的 promise 的方法
+- 基本用法 
+new Promise((resolve, reject)=>{
+
+  resolve();
+});
+
+- Promise.all() —— 接受一个 Promise 对象/实例（最开始为等待状态）组成的数组，只有当所有的 Promise 对象都为 已兑现状态时，才会将 已兑现的 数组返回给回调函数。只有有一个 Promise 对象被拒绝，则会立刻中止，并返回一个已拒绝的 Promise 对象。
+
+- Promise.race() —— 接受一个 Promise 对象/实例（最开始为等待状态）组成的数组，多个 promise 对象会进行比赛，看谁的状态最先改变，就将谁的值传递给回调函数。
+
+- Promise.resolve() —— 直接返回一个已兑现的 Promise 对象。
+
+- Promise.reject() —— 直接返回一个已拒绝的 Promise 对象。
+```
+
+``` md
+> 51. 类、对象、实例解析
+- 类，是对一类事物的抽象，定义了该类事物的属性和方法。
+
+- 对象，是类的实例化，具有类所定义的属性和方法。
+
+- 实例，对象的另一个说法，常用语："实例化一个对象”。
+```
+
+``` md
+> 52. promise.catch 后，后面的.then 还会执行吗？
+- 会继续执行。
+
+- 因为 Promise 的链式调用。catch 处理完 上一个 已拒绝的 Promise 对象后，自己也会返回一个 Promise 对象给下一个 then 或 catch（如果有的话）。
+```
+
+``` md
+> 53. 如何为 Promise 添加一个方法？
+- 见：43. JS 中怎么给对象添加新属性？
+```
+
+``` md
+> 54. try catch 捕获异常的机制？
+- try catch 是同步代码，因此，只能捕获到同步代码抛出的异常。
+
+- 所以通过 try catch 无法捕获 Promise 对象 抛出的异常。
+```
+- [参考资料 try catch 捕获异常](https://juejin.cn/post/6923156017991647240#heading-13)
+
+``` md
+> 55. 说一下 this 的指向有几种方式及使用场景
+- this 的指向问题：this 指向当前的 调用者。
+
+- 因此，如果是 对象 调用，则指向对象，函数调用则指向函数，window 全局对象调用，则指向 window 对象。
+
+- 需要注意的是：匿名函数、定时器函数、箭头函数中，不存在 this，因此，这里面的 this 表示的是 外层的 this。
+```
+- [参考资料 this 指向](https://www.51cto.com/article/610586.html)
+
+``` md
+> 56. 说一下 JS 的执行上下文
+- 执行上下文，即执行环境，也即作用域。
+```
+
+``` md
+> 57. JS 引擎如何创建执行上下文？ 
+- 分为两个阶段，首先是创建阶段，然后是执行阶段。
+
+> 在创建阶段，创建变量对象，创建作用域链，设置 this 的值。
+
+- 创建变量对象，对 var 定义的变量进行提升（赋值为 undefined ）、对代码中定义函数（匿名函数除外）进行提升、 并且 为每一个函数生成一个参数对象。所以在代码开始执行前，这些变量和函数就已经可以访问了。
+
+- 创建作用域链，用于JS 中的作用域链的查找机制。决定了一段代码可以在哪里访问？哪里不能访问？代码哪些部分可以被访问，哪些部分不能？因此在函数定义阶段，已经创建好了作用域链。
+
+- 初始化 this 关键字的值，一旦作用域链被创建，JS 引擎就会设置 this 关键字的值。全局作用域下，设置 this 的值为 window 对象，函数作用域下，并不会初始化 this 的值。而是让 this 指向函数的调用者。
+
+> 在执行阶段，JavaScript 引擎会再次读取执行上下文，并用变量的实际值更新变量对象。然后解释器再把代码编译为计算机可执行的字节码后执行。
+```
+- [参考资料 JS 引擎工作流程](https://www.freecodecamp.org/chinese/news/execution-context-how-javascript-works-behind-the-scenes/)
+
+``` md
+> 58.  JS 的执行上下文
+- 执行上下文就是 JS 代码的执行环境。是 JS 引擎为运行 JS 代码所创建。
+
+- JS 的执行上下文分为全局执行上下文和函数执行上下文。
+
+- 执行上下文 在 JS 引擎中是如何创建的。见：JS 引擎如何创建 执行上下文？ 
+```
+
+``` md
+> 59. 函数和对象及其上下文存储在哪里？
+- 函数和对象的执行上下文会存储在执行栈中。（全局执行上下文在栈底）
+
+- 注意：首次运行JS 代码时，会创建一个全局执行上下文并推到当前执行栈中。此后，每当发生函数调用时，引擎都会为该函数创建一个新的函数执行上下文并推到当前执行栈的栈顶。
+
+- **JS 引擎的工作机制：JS 引擎在工作阶段，会首先创建全局执行上下文，然后每当函数被调用时，JavaScript引擎就会在全局上下文内部创建函数执行上下文。因为每个函数调用都创建自己的FEC，所以在脚本运行期间会有多个FEC。**
+```
+
+``` md
+> 60. 箭头函数中 this 的指向
+- 箭头函数不绑定 this，因此箭头函数中的 this 指向取决于外层环境中的 this 的值。
+
+- 注意：箭头函数的 this 无法通过 bind，call，apply 来直接修改。因为 箭头函数中是不绑定 this 的。
+```
+- [参考资料 箭头函数](https://muyiy.cn/blog/3/3.2.html#%E9%A2%98%E7%9B%AE1)
+
+``` md
+> 61. 改变 this 指向的方法 call()、apply()、 bind()的作用和区别 ？
+- 首先，call()、apply()、 bind() 都是JS 中函数的方法。函数可以通过调用这些方法改变函数上下文中的 this 指向。
+
+> 区别：
+- call 和 apply 函数主要是用法的区别，bind 的区别主要是是否是立即执行函数。
+
+- call 函数，第一个参数都是用来改变 this 指向，其余参数用来传递函数参数。
+
+- apply 函数，第一个参数都是用来改变 this 指向，然后用一个数组来传递函数参数。
+
+- bind 函数，传参和 call 函数一致，但是 bind 函数不会立即执行函数，而是返回一个永久改变 this 指向的函数表达式。**推荐**
+```
+- [参考资料 改变 this 指向](https://github.com/febobo/web-interview/issues/71)
+
+``` md
+> 62.  bind 如果第一次传入了 this，我再给 bind 传入一次 this，他执行的是哪个 this
+- 后一个 this，因为 bind 改变 this 指向后，不会立即执行函数，而是返回一个函数表达式。
+```
+
+``` md
+> 63. JS 中的 $nextTick 会在什么时候执行？
+- 会在下次更新 DOM 的时候执行。
+
+- 因此 $nextTick 属于微任务。
+
+- 阅读以下代码
+```
+``` js
+// for 循环，执行 10 次
+for (let i = 0; i < 10; i++) {
+  // 给 this 对象绑定 a 属性，值为 i
+  this.a = i;
+  // 执行 $nextTick 函数，并将 其中的 回调函数加入 微任务队列中
+  this.$nextTick(() => {
+    console.log(i);
+    console.log(this.a);
+  });
+}
+> 输出
+0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9
+```
+
+``` md
+> 64. 介绍下 ajax 及其原理
+- ajax 就是，Asynchronous JavaScript And XML，读音：ə/dʒæ/kˈs
+
+- 也即，异步网络请求技术，可使 Web 应用程序对用户交互的响应速度更快。可以在不重新加载整个网页的情况下，与服务器交换数据，并且更新部分网页。
+
+- Ajax 的原理简单来说通过 XHR 对象来向服务器发送网络请求，然后从服务器获得响应数据，然后用 JS 来操作 DOM 而更新页面。
+``` 
+- [参考资料 Ajax 异步网络请求技术](https://github.com/ljianshu/Blog/issues/45)
+
+- [参考资料 Ajax 异步网络请求技术](https://vue3js.cn/interview/JavaScript/ajax.html#%E4%B8%80%E3%80%81%E6%98%AF%E4%BB%80%E4%B9%88)
+
+- [参考资料 XHR 对象](https://vue3js.cn/interview/JavaScript/ajax.html#%E4%B8%80%E3%80%81%E6%98%AF%E4%BB%80%E4%B9%88)
+
+``` md
+> 65. axios 和 fetch 的区别 ？ 
+- JS 的进行异步网络请求的历史：原生 JS => XHR 对象 => Ajax => axios、fetch
+
+- axios， 是一个异步网络请求库。在服务端它使用原生JS 中的 HTTP 模块实现, 而在客户端 (浏览端) 则使用 XHR 对象实现。
+
+- fetch， 是一个异步网络请求库。基于 XHR 对象。
+```
+
+``` md
+> 66. Promise 是什么？
+- 异步编程后返回的已兑现或已拒绝的对象。
+```
+
+``` md
+> 67. 前后端接口联调是什么意思？
+- 前端通过异步网络请求技术API（一般通过 axios 或 fetch API ）发送网络请求并接受响应数据。
+
+- Java 后端通过 Springboot 框架接受网络请求并返回响应数据。
+
+- 前端发送 request 请求，接受 response 响应。后端接受 request 请求，返回 response 响应。
+```
+
+``` md
+> 69. 说说 es6 中的 class
+- ES6 新提供的一个关键字，用于在 JS 中定义 类。本质是一个语法糖。JS 中实现继承，class 关键字定义类的时候，内部是通过原型链实现的。
+```
+
+``` md
+> 70. JSONP 原理
+- 一种解决浏览器跨域的方案。
+```
+- [参考资料 JSONP](https://github.com/YvetteLau/Step-By-Step/issues/30)
+
+``` md
+> 71. 说一下 JS 中的 new 关键字实例化对象的时候都做了什么？
+- 共四步, 关键点如下: 
+- 关键点：new 关键字去实例化一个对象, 关键点在于该对象的 原型属性 指向那里 和 this 指向 那里.
+
+- 代码实现如下：
+```
+``` js
+function mynew(Func, ...args) {
+  // 1.创建一个新对象
+  const obj = {}
+  // 2.新对象原型属性指向 构造函数原型对象
+  obj.__proto__ = Func.prototype
+  // 3.改变 构建函数的 this 指向，指向新对象
+  let result = Func.apply(obj, args)
+  // 4.根据返回值判断
+  return result instanceof Object ? result : obj
+}
+```
+
+``` md
+> 72. JS 中的数组和对象是如何在内存中存储的
+- 都存储在堆内存中，但是数组在堆内存中是一片连续的内存空间，对象是离散的内存空间。（因为对象内部是键值对形式）
+```
+
+``` md
+> 73. JS 中如何实例化 Object 对象、Set 集合、Map 映射？
+```
+``` js
+// 实例化 Object 对象
+// value 可以是任意值，该构造函数会返回一个 Object 对象。
+new Object(value); 
+console.log(new Object({ "a": 1 }));
+输出: { a: 1 };
+总结: 实例化对象时，一般用 { "key1": value1, "key2": value2, "key3": value3 } 形式.
+
+// 实例化 Set 集合
+// 接受的参数为一个可迭代对象(对象内部的元素类型不限)，例如：Array 数组对象，String 字符串对象等。
+// 该构造函数的返回值为一个 Set 集合。
+new Set(iterable);
+console.log(new Set([1,2,3,4,1])); 
+// 由于 Set 集合，所以重复的 1，会被去重。
+输出: { 1,2,3,4 };
+总结: 实例化集合时, 一般用 [value1, value2, value3] 形式.
+
+// 实例化 Map 字典
+// 接受一个可迭代对象(但是要求该对象内部的元素必须是具有键值对的可迭代对象，以逗号分开)，例如：Array 数组对象，String 字符串对象等。
+// 该构造函数的返回值为一个 Map 字典。
+new Map(iterable);
+console.log(new Map([[1,2]]));
+输出: { 1 => 2 };
+总结: 实例化字典时, 一般用 [[key1, value1], [key2, value2], [key3, value3]] 形式
+```
+``` md
+> 注意: Object 对象, Set 集合, Map 字典 都具有 key 和 value 属性. 要获取对象值, Set 集合 需要通过遍历, 但是 对象 和 字典 可以通过 get 方法直接获取对应 key 的 value. 
+
+> JS 中对象中的 Entries 表示 数据项 的意思.
+```
+
+``` md
+> 74. JS 中的 可迭代对象 是什么？ 
+- 实现了 迭代器(iterator) 方法的对象，就是 可迭代对象。
+
+> 注意：类数组对象 和 可迭代对象 不一样。
+
+- 只能说有些对象同时具有类数组和可迭代的特点。因为，类数组对象本质是其具有类似数组的长度和索引属性。而可迭代对象本质是因为其具有迭代器方法。 
+```
+- [参考资料 可迭代对象](https://zh.javascript.info/iterable)
+
+``` md
+> 75. 如何理解 for..of 遍历对象？
+- for..of 本质是在循环调用该对象中的 迭代器(iterator) 方法。
+```
+
+``` md
+> 76. 如何将 可迭代对象 转换为数组呢？
+- ES6 之后，可以直接提供 展开运算符实现。
+[...iterable];
+```
+
+``` md
+> 77. 浅拷贝和深拷贝的区别 ？
+- 区别在于 是否会拷贝 堆内存 中的数据.
+
+- 浅拷贝只拷贝 栈内存 中的数据.
+
+- 深拷贝 不仅拷贝 栈内存 中的数据, 也会拷贝 堆内存 中的数据.
+```
+- [参考资料 深拷贝和浅拷贝](https://github.com/YvetteLau/Step-By-Step/issues/17)
+
+``` md
+> 78. 怎么区别 array 和 object ？
+- 原型方法: Object.prototype.toString.call()
+
+- 实例方法: instanceof
+
+- 数组方法: Array.isArray() **推荐**
+```
+- [参考资料 怎么区别 array 和 object ？](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/23)
+
+``` md
+> 79. Object 和 Map 的理解 和 相互转换
+- Object 是对象, 用来存储 键值对, 是JS中的一种引用数据类型.
+
+- Map 是字典, 用来存储 键值对, 是JS中的一种引用数据类型.
+
+- 但是 Object 只能存储 字符串 类型的键. 且 不会自动去重.
+
+- 相互转换: Object的entries方法和fromEntries方法.
+```
+``` js
+> Object对象 转换为 Map字典
+const obj = { a: 1, b: 2 };
+const map = new Map(Object.entries(obj));
+
+> Map字典 转换为 Object对象
+const map = new Map([['a', 1], ['b', 2]]);
+const obj = Object.fromEntries(map);
+```
+- [参考资料 Object对象 和 Map字典](https://juejin.cn/post/7226933918829822009)
+
+``` md
+> 80. 说一说事件冒泡，事件委托以及应用场景
+- 事件冒泡 是 JS 中浏览器处理嵌套元素时的 事件传播机制, 是用内向外 传播事件, 与之相对的是 事件捕获, 由外向内 传播事件.
+
+- 而 事件委托, 则是对 事件冒泡 的一种使用, 即通过将父元素下的 子元素 的事件 绑定在父元素上, 通过 事件冒泡, 最后在 父元素 统一处理.
+
+- 注意: 默认情况下, 事件捕获 是被禁用的, 会存在这两种 事件传播机制 是因为 IE 和 网景 的原因. 与 浏览器 的发展历史有关. 
+```
+- [参考资料 事件冒泡](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Building_blocks/Event_bubbling)
+
+``` md
+> 81. 如何阻止事件冒泡
+- JS 语言原生方法: event.stopPropagation();
+
+- Vue 前端框架的方法: .stop 修饰符
+
+- 
+```
+- [参考资料 阻止事件冒泡](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopPropagation)
+
+``` md
+> 82. setTimeout为什么会存在延迟？怎么解决这个问题 ？
+- 第一个是因为, JS 中的 定时器 方法, 属于 宏任务, 所以必然会在 同步任务 和 微任务 执行完毕后, 在执行的, 因此会具有所谓的 **延迟**.
+
+- 第二个就是, 嵌套调用 setTimeout 存在最小时延 4ms.
+
+- 第三个就是, 未激活的页面，setTimeout 的最小执行间隔是 1000ms.
+
+> 前提知识: JS 是单线程，同一时间只能做一件事情。如果前面一个任务执行时间很长（比如网络请求），后面就必须的等待很长时间。为了解决这个问题，JS 将 执行的任务 分为 同步任务 和 异步任务. 同步任务会在 执行栈 中立即执行, 而异步任务会在 任务队列 中等待.
+```
+- [参考资料 定时器](https://github.com/YvetteLau/Step-By-Step/issues/21)
+
+``` md
+> 83. DOM 怎么添加事件?
+- 添加事件 等于 注册事件 等于 绑定事件 等于 监听事件
+- 第一种: 原生方法 addEventListener
+a.addEventListener("click", function(){
+	alert("m-a")
+},false)
+
+- 第二种: Vue 提供的方法 v-on 或 @ 缩写
+```
+- [参考资料 事件监听方法](https://developer.mozilla.org/zh-CN/docs/Web/Events/Creating_and_triggering_events)
+
+``` md
+> 84. 给一个 DOM 同时绑定两个点击事件，一个用捕获，一个用冒泡，说下会执行几次事件，然后会先执行冒泡还是捕获
+- 在保证 浏览器 的 兼容性 的情况下.
+- 以 chrome 读音: /krəʊm/ 为例: 先执行捕获在执行冒泡
+```
+``` js 代码如下
+HTML 部分
+<div id="btn">点击
+  <div id="btn2" style="margin: 100px;">
+    点击2
+  </div>
+</div>
+
+JS 部分
+const btn = document.getElementById('btn')
+const btn2 = document.getElementById('btn')
+btn.addEventListener('click', () => {console.log('aa')})
+btn.addEventListener('click', () => {console.log('bb')}, true)
+
+btn2.addEventListener('click', () => {console.log('cc')})
+btn2.addEventListener('click', () => {console.log('dd')}, true)
+
+输出: 
+bb dd aa cc
+```
+- [参考资料1 冒泡 和 捕获 的执行顺序](https://www.jyshare.com/front-end/61/)
+
+- [参考资料2 冒泡 和 捕获 的执行顺序](https://github.com/lgwebdream/FE-Interview/issues/1220)
+
+``` md
+> 85. dom 树和 render 树有啥区别
+> 知识储备: 浏览器的渲染过程(共五步): 
+- **解析HTML文件, 构建DOM树=>解析CSS文件, 构建CSSOM树=>通过DOM树和CSSOM树, 构建render树=>进行页面回流布局=>进行屏幕绘制**
+- **需要注意的是**: 如果渲染过程中遇到 JS 部分, 比如 <script> 标签（特别是没有 async 或者 defer 属性的）会阻塞渲染并停止 HTML 的解析.
+- **因为浏览器的线程有GUI渲染线程与JS引擎线程，为了防止渲染出现不可预期的结果，这两个线程是互斥的关系。**
+
+- 1. 构建 DOM树 + 请求 头部元素 链接的资源. 即解析 HTML元素 构建 DOM(DOM树), 并请求css/image/js 资源
+
+- 2. 构建 CSSOM树. 即 CSS 文件下载完成, 开始构建 CSSOM (css树)
+
+- 3. 构建 渲染树. 即 CSSOM树 构建结束后, 和 DOM 一起生成 Render Tree(渲染树)
+
+- 4. 进行页面回流布局(Layout), 计算出每个渲染树上的节点在屏幕中的位置.
+
+- 5. 进行屏幕绘制(Painting). 通过显卡把页面画在屏幕上.
+
+> 回答:
+1. 构建的时间不同.
+
+2. 构建好后所具有的 元素 不同. DOM树 与 HTML元素 是一一对应, 包括 head头部元素 和 隐藏元素. 而 渲染树 不包括 head头部元素 和 隐藏元素 这些 非可视化元素.
+```
+- [参考资料 DOM树 和 渲染树的不同](https://juejin.cn/post/7102709215541592077)
+
+- [参考资料 渲染树的构建](https://tsejx.github.io/javascript-guidebook/browser-object-model/browser-working-principle/construction-of-render-tree/)
+
+- [参考资料 浏览器渲染过程](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)
+
+**浏览器渲染过程**
+- ![浏览器渲染过程](image-21.png)
+
+``` md
+> 86. 什么是 架构?
+- **架构 即 结构. 框架 即 规范**.
+```
+- [参考资料 架构是什么 或 你对架构的理解](https://modelbaba.com/architecture/1981.html)
+
+``` md
+> 87. 异步加载 css 会阻塞页面的渲染吗? 
+> 知识储备: 
+- 1. css加载不会阻塞DOM树的解析.
+
+- 2. css加载会阻塞DOM树的渲染.
+
+- 3. css加载会阻塞后面js语句的执行.
+
+> 回答: 
+- 1. 同步加载时, 会阻塞页面的渲染.
+
+- 2. 采用异步加载技术，可以减少这种阻塞现象，从而提升用户体验。
+
+> 扩展: 
+- 1. JS 加载不仅会阻塞页面渲染, 还会停止 HTML 的解析, 直到 JS 部分 执行完毕. 因为浏览器的线程有GUI渲染线程与JS引擎线程，为了防止渲染出现不可预期的结果，这两个线程是互斥的关系。
+
+- 2. 对于浏览器的渲染或者解析是否阻塞问题, 取决于 浏览器的渲染过程. 
+解析HTML文件, 构建DOM树=>解析CSS文件, 构建CSSOM树=>通过DOM树和CSS树, 构建render树=>进行页面回流布局=>进行屏幕绘制
+
+- 3. 产生阻塞的根本原因: 因为同步操作导致的**不可预测**.
+```
+- [参考资料 异步加载 css 会阻塞页面的渲染吗](https://juejin.cn/post/6844903667733118983)
+
+- [参考资料 浏览器如果渲染过程中遇到JS文件怎么处理？](https://347830076.github.io/myBlog/javascript/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86%E6%B5%81%E7%A8%8B.html#%E6%9E%84%E5%BB%BA%E6%B8%B2%E6%9F%93%E6%A0%91)
+
+- [参考资料 浏览器渲染过程](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)
+
+**浏览器渲染过程**
+- ![浏览器渲染过程](image-21.png)
+
+``` md
+> 88. DOM 树和 css dom 树是互斥的还是同时的
+- 同时进行的, 前者通过 HTML解析器, 后者通过 CSS解析器.
+```
+- [参考资料 DOM 树和 css dom 树是互斥的还是同时的](https://juejin.cn/post/6951338582573318158)
+
+``` md
+> 89. JS 脚本阻塞 DOM 构建，JS 脚本会不会对 css dom 树影响
+- 会.
+```
+
+``` md
+> 90. 说说 JS 的事件循环机制 ？
+> 知识储备:
+- 1. 为什么JS只能是单线程? 
+- 因为JS作为浏览器的脚本语言，它的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。如果说JS同时又2个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这个时候浏览器该如何处理呢？所以，为了避免复杂性，从一开始，JavaScript就是单线程，这已经成为了这门语言的核心特点，未来也不会改变。
+- 单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。如果前一个任务耗时很长，后一个任务就不得不一直等着。但是很多时候CPU是处于空闲状态的，因为IO设备很慢，比如说Ajax获取数据，这个时候就不得不等到结果出来之后，再往下继续执行。
+这个时候JavaScript的设计者意识到，这时主线程完全可以不管IO设备，挂起处于等待中的任务，先运行排在后面的任务。等到设备返回了结果，再回过头，把挂起的任务继续执行下去。
+- 因此，所有的任务分成了2种，一种是同步任务（synchronous），一种是异步任务（asynchronous）。同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；异步任务是指，不进入主线程、而进入“任务队列”（task queue）的任务，只有任务队列通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。
+- 具体的运行机制如下：
+- 1.所有同步任务都在主线程上执行，形成一个执行栈；
+
+- 2.主线程外，还存在一个任务队列，只要异步任务有了运行结果，就在“任务队列”之中放置一个事件；
+
+- 3.一旦“执行栈”中的所有同步任务执行完成，系统就会读取“任务队列”，看看里面有哪些事件，哪些对应的异步任务，于是结束等待状态，进入执行栈，开始执行；
+
+- 4.主线程不断重复上面三个步骤。
+
+- 只要主线程空了，就会去读取“任务队列”，这就是JavaScript的运行机制，整个过程都会不断重复。
+
+- 因为主线程从"任务队列"中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop（事件循环）
+
+> 事件循环是什么?
+- 当执行栈清空之后, 主线程不断从任务队列中读取异步任务压入执行栈的过程, 称为 事件循环.
+
+- 主线程即JS引擎线程.
+
+> 补充:
+- 1. 宏任务: 
+- script（整体JS代码, 属于最大的宏任务, 这也是为什么说**宏任务优先，在宏任务执行完毕之后才会来一次性清空任务队列中的所有微任务**.）
+
+- setTimeout()
+
+- setInterval()
+
+- postMessage(可用于解决跨域通信问题)
+
+- 异步I/O
+
+- UI交互事件
+
+- 2. 微任务
+- Promise 对象.
+
+- MutationObserver(html5新特性)
+
+- 同域进行的网络请求.
+
+- 3. 本质在考, JS 引擎的执行过程. 中的第三阶段, 执行阶段.
+```
+- [参考资料 JS的单线程, 任务队列, 事件, 事件循环](https://github.com/JCHappytime/Front-End-Knowledge-Share/issues/17)
+
+- [参考资料 JS引擎的执行过程](https://heyingye.github.io/2018/03/19/js%E5%BC%95%E6%93%8E%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/)
+
+**JS引擎的执行过程**
+- 语法检测阶段, 创建执行上下文阶段, 执行阶段(即事件循环阶段)
+
+- ![JS引擎的执行过程](image-22.png)
+
+``` md
+> 91. 说一下浏览器的事件循环机制 和 node 事件循环机制
+- 大体相同, 主要在于对宏任务和微任务的执行顺序不同.(仅限于 nodejs V11.0 之前)
+
+- nodejs V11.0 之前, node 是只要开始执行宏任务, 会先执行所有的宏任务，再执行微任务(即使在执行宏任务期间有了新的微任务).
+
+- nodejs V11.0 之后, node 是清空微任务队列后, 才会执行宏任务队列.
+```
+``` js
+代码如下:
+function test () {
+   console.log('start')
+    setTimeout(() => {
+        console.log('children2')
+        Promise.resolve().then(() => {console.log('children2-1')})
+    }, 0)
+    setTimeout(() => {
+        console.log('children3')
+        Promise.resolve().then(() => {console.log('children3-1')})
+    }, 0)
+    Promise.resolve().then(() => {console.log('children1')})
+    console.log('end') 
+}
+
+test()
+
+// 以上代码在node11以下版本的执行结果(先执行所有的宏任务，再执行微任务)
+// start
+// end
+// children1
+// children2
+// children3
+// children2-1
+// children3-1
+
+// 以上代码在node11及浏览器的执行结果(顺序执行宏任务和微任务)
+// start
+// end
+// children1
+// children2
+// children2-1
+// children3
+// children3-1
+```
+- [参考资料 说一下浏览器的事件循环机制 和 nodejs的事件循环机制](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/26)
+
+``` md
+> 92. ES6 有哪些新特性，说一下你用过的 ES6 的新特性
+- 1. const 和 let 关键字(避免了变量提升)
+
+- 2. 模板字符串
+
+- 3. 箭头函数(没有自己的this, 参数对象, 以及 原型属性)
+
+- 4. 对象/数组的解构
+
+- 5. for...of 遍历可迭代对象 和 for...in 遍历对象
+
+- 6. ES6 新增了 类的语法
+
+- 7. 参数设置默认值(如果调用函数的时候没有传参，这个时候才会使用默认值。)
+
+- 8. spread 扩展操作符 和 rest 剩余操作符(...)
+
+- 9. 支持二进制和八进制字面量
+```
+- [参考资料1 ES6 有哪些新特性，说一下你用过的 ES6 的新特性](https://github.com/JCHappytime/Front-End-Knowledge-Share/issues/11)
+
+- [参考资料2 ES6 有哪些新特性，说一下你用过的 ES6 的新特性](https://juejin.cn/post/6844903618810757128#heading-7)
+
+``` md
+> 93. Set、Map、WeakMap、WeakSet 区别
+- 1. Set 集合, 用来存储 value, 是 JS 中的一种引用数据类型
+
+- 2. Map 字典, 用来存储 [key, value], 是 JS 中的一种引用数据类型
+
+- 3. WeakMap 弱字典, 用来存储 [key, value], 但是 key 只接受对象, 是 JS 中的一种引用数据类型
+
+- 4. WeakSet 弱集合, 用来存储 value, 但是 value 只接受对象, 是 JS 中的一种引用数据类型
+
+> 扩展:
+1. WeakSet, WeakMap 和 Set, Map 的另一个区别则是 前者可以被垃圾回收器回收, 可以用来保存DOM节点, 不容易造成内存泄漏.
+```
+- [参考资料 Set、Map、WeakMap、WeakSet 区别](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/6)
+
+``` md
+> 94. JS中的 map, some, every, forEach, filter 区别
+- 1. forEach 遍历数组, 最终的返回值, 取决于你每次遍历时设置的返回值.
+
+- 2. map 遍历数组, 会返回一个新数组, 新数组内的元素取决于你你每次遍历时设置的返回值.
+
+- 3. filter 遍历数组, 会回一个新数组, 新数组内的元素取决于你你每次遍历时设置的返回条件.
+
+- 4. some 遍历数组, 会返回一个布尔值, 是真是假, 取决于你每次遍历时设置的返回条件, 全假则假, 否则为真.
+
+- 5. every 遍历数组, 会回一个布尔值, 是真是假, 取决于你每次遍历时设置的返回条件, 全真则真, 否则为假.
+```
+- [参考资料 Array.map some forEach 区别](https://juejin.cn/post/7119479371949146119)
+
+``` md
+> 95. 箭头函数和普通函数的区别
+- 在 JS 中, 函数亦是对象, 因此会具有自己的属性和方法. 但是 箭头函数, 只是 一种特殊的函数表达式, 是不具备 对象才具有的方法和属性的.
+
+- 因此, 箭头函数 没有 原型属性, 构造函数属性, 也没有 参数对象 和 this 对象.
+```
+- [参考资料 箭头函数和普通函数的区别](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/101)
+
+``` md
+> 96. 实现一个柯里化函数(**可以先使用别人已经写好的体验体验**)
+>  柯里化函数是什么
+- 柯里化, 就是可以将一个多参函数转换为一系列单参函数的技术.
+
+- 柯里化函数, 就是具有柯里化特点的函数.
+
+> 通过代码理解
+```
+``` js 
+function add(a, b) {
+    return a + b;
+}
+
+// 执行 add 函数，一次传入两个参数即可
+add(1, 2) // 3
+
+// 假设有一个 curry 函数可以做到柯里化
+// 此处体现了柯里化的特点: 将一个多参函数 add 转换为一系列单参函数 addCurry.
+var addCurry = curry(add);
+// 此处体现为两个单参函数 const fnu = addCurry(1); 和 fnu(2);
+addCurry(1)(2) // 3
+```
+``` md
+> 通过闭包理解 
+- 使用闭包把参数保存起来，当参数的数量足够时, 执行相应的函数.
+```
+- [参考资料 柯里化 和 柯里化函数](https://github.com/mqyqingfeng/Blog/issues/42)
+
+``` md
+> 96. 说一下你知道的纯函数
+> 纯函数是什么
+- **与外界只有一个沟通渠道的函数**, 即通过传入参数和返回值进行沟通, 也即**无副作用**.
+
+- 相同的传入参数永远只会有相同的返回值.
+
+**推荐使用纯函数编程**
+> 顿悟
+- 真假, 这么一看, 自己编写的 JS 函数, 好像没几个纯函数啊!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+> 现在才理解了纯函数式编程的意思, 有意思的很, 开始实践.
+```
+``` js
+// 通过代码理解
+var signUp = function(Db, Email, attrs) {
+  return function() {
+    let user = saveUser(Db, attrs);
+    welcomeUser(Email, user);
+  };
+};
+
+var saveUser = function(Db, attrs) {
+    ...
+};
+
+var welcomeUser = function(Email, user) {
+    ...
+};
+```
+- [参考资料1 纯函数](https://github.com/bruce-16/zblog/issues/3)
+
+- [参考资料2 纯函数](https://xie.infoq.cn/article/6bf4f9874a1cc0bc31d74996c)
+
+``` md
+> 97. 前端部分做了哪些 数据存储 ？
+- 1. cookies: 是 服务器 发送到 客户端 并 保存在本地的 一小块数据. 主要用来 存储 用户状态(使得基于 无状态的 HTTP 协议 记录 稳定状态 成为可能.), 下次进入开启了 cookies 的网站会自动发送给服务器. 有效期 可设置, 作用域 同源窗口共享, 存储大小一般为 4KB
+
+- 2. localStorage(本地存储): 以 键值对 的形式保存在本地网站数据, 不会自动发送给服务器. 有效期 长期有效, 作用域 同源窗口共享, 存储大小 因浏览器而异, 一般在5MB-10MB
+
+- 3. sessionStorage(会话存储): 以 键值对 的形式保存在本地网站数据, 不会自动发送给服务器. 有效期 当前窗口关闭前有效, 作用域 仅当前窗口, 存储大小 因浏览器而异, 一般在5MB-10MB
+
+- 4. indexDB: 用于在客户端存储大量的结构化数据
+
+- 5. 第三方库: 
+```
+- [参考资料1 cookies](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies)
+
+- [参考资料2 cookies](https://juejin.cn/post/6877133657228869639)
+
+- [参考资料3 cookies](https://zh.javascript.info/cookie)
+
+- [参考资料 前端数据存储方法](https://yin-hongwei.github.io/2020/07/22/%E5%89%8D%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%96%B9%E6%A1%88/)
+
+- [参考资料 本地存储 和 会话存储](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage)
+
+- [参考资料 本地存储 和 会话存储 的存储限制](https://github.com/FrankKai/FrankKai.github.io/issues/179)
+
+- [参考资料 indexDB](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API)
+
+``` md
+98. 说说进程、线程是什么，了解协程么 ？
+- 1. 进程: 是 操作系统 中最小的 资源调度单位, 表示 应用程序 的执行过程. 
+
+- 2. 线程: 是 进程 中的 最小执行单元.
+
+- 3. 协程: 是 线程 中的 一种 特殊的函数, 因此协程 和 进程, 线程 不属于一个概念. 
+```
+- [参考资料 说说进程、线程是什么，了解协程么 ？](https://juejin.cn/post/6975852498393235487)
+
+``` md
+> 99. 如何理解 渐进增强 和 优雅降级?
+- 首先, 渐进增强 和 优雅降级 这两个概念是在 CSS3 出现之后火起来的。由于 低级浏览器 不支持 CSS3，但是 CSS3 特效太优秀不忍放弃，所以在 高级浏览器 中使用CSS3，而在 低级浏览器 只保证最基本的功能。二者的 目的 都是 关注 不同浏览器 下的 不同体验，但是它们 侧重点不同，所以导致了 工作流程上 的不同。
+
+- 也即是在 CSS3 出来后的两种 样式 设计流程. 
+
+- 1. 优雅降级: 从复杂 => 简单
+
+- 2. 渐进增强: 从简单 => 复杂
+
+- 3. 代码如下:
+```
+``` js
+/* 优雅降级 */
+.transition{ 
+	　　     transition: all .5s;
+	　　  -o-transition: all .5s;
+	  　-moz-transition: all .5s;
+	 -webkit-transition: all .5s;
+}
+ /* 渐进增强 */
+.transition{
+	-webkit-transition: all .5s;
+	   -moz-transition: all .5s;
+	     -o-transition: all .5s;
+	        transition: all .5s;   
+    }
+```
+``` md
+通过两段代码的书写顺序，可以看出渐进增强和优雅降级开发的重点不同。优雅降级是从复杂的现状开始，并试图减少用户体验的供给，而渐进增强则是从一个非常基础的、能够起作用的版本开始，并不断扩充，以适应未来环境的需要。
+
+优雅降级（Graceful Degradation）原则指的是在开发过程中，先构建网站或应用的基本功能，然后再针对低版本浏览器进行兼容。这样可以确保网站或应用在所有浏览器中都能正常工作，并为那些无法支持最新版本的浏览器提供一个过渡方案，从而不至于完全失效。
+
+相比之下，渐进增强（Progressive Enhancement）原则指的是在开发过程中，逐步增加新的功能和特性，以适应不断变化的市场和用户需求。这种方法可以使网站或应用更加现代化和新颖，从而吸引更多的用户。
+
+优雅降级和渐进增强的区别在于，优雅降级是从复杂的现状开始，尽可能减少用户体验的供给，而渐进增强则是从一个非常基础的、能够起作用的版本开始，不断扩充以适应未来环境的需要。因此，优雅降级更加注重网站或应用的功能和兼容性，而渐进增强更加注重网站或应用的新颖性和现代化。
+```
+- [参考资料 渐进增强和优雅降级](https://www.51cto.com/article/756524.html)
+
+``` md
+> 100. 代理和反向代理
+- 1. 正向代理: 位于 网络 和 用户 之间的一种网络服务.
+
+- 优点: 隐私保护和匿名性(正向代理可以隐藏客户端的真实IP地址和身份，使目标服务器只能看到代理服务器的IP地址。)
+```
+![正向代理](image-23.png)
+
+``` md
+- 2. 反向代理: 位于 网络 和 服务器 之间的一种网络服务.
+
+- 优点: 负载均衡(反向代理可以将客户端的请求分发给多个目标服务器，以平衡服务器负载。)
+```
+![反向代理](image-24.png)
+
+- [参考资料 代理和反向代理](https://server.51cto.com/article/765977.html)
+
+``` md
+> 101. 取两个整数之间随机一个整数(包含 边界值)
+- 解题思路: 使用 Math.random() 函数, 该函数可以 随机获取 [0, 1) 之间的数.
+- 代码如下
+```
+``` js
+const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+console.log(getRandomNumber(1, 10));
+```
+- [参考资料 取两个整数之间随机一个整数](https://juejin.cn/post/7118596747269505038)
+
+``` md
+> 102. 从数组中取 n 个数使得其和为 m
+- 补充知识1: 加法原理(a+b+c, a b c 相互独立) 和 乘法原理(a*b*c a b c 相互关联); 排列数(A) 和 组合数(C)
+
+- 补充知识2: 二进制计数, 移位运算符, Math.pow(base, exponent) 方法
+
+- 补充知识3: 长度为 len 的 数组, 选择 n 个数的 组合有: 4 的阶乘, 即4!.
+```
+``` js
+- 补充知识4: JS 遍历二进制数, 并记录 1 的个数(注意: binary 可以是十进制数, 因为当进行位运算的时候, 会自动转换为二进制进行计算的)
+function traversalBinary(binary) {
+  // 记录 1 的个数
+  let count = 0;
+  while(binary) {
+    // 按位 与
+    if(binary & 1){
+    ++count;
+    }
+    // 右移一位 
+    binary = binary >> 1;
+  }
+  return count;
+}
+console.log(traversalBinary(10))
+// => 2
+```
+``` md
+- 解题思路:
+- 1. 从数组中取 n 个数
+- 通过将数组中可能的取法 映射为 二进制数, 然后遍历二进制数获得 1 的个数, 来判断是否取得了 n 个数. 
+
+- 2. n 个数求和
+- 通过将数组的索引 映射为 二进制数, 进行按位与, 实现求和
+
+- 3. 和 m 比较
+```
+``` js
+- 代码实现
+function search(arr, count, sum){
+  const len = arr.length;
+  const res = [];
+  // 将数组中可能的所有取法 映射为 二进制数
+  for(let i = 0; i < Math.pow(2, len); i++){
+    // const binaryN = i;
+    // 遍历二进制数
+    if(traversalBinary(i) === count){
+      // 将数组的索引 映射为 二进制数
+      let s = 0, temp = [];
+      for (let j = 0; j < len; j++) {
+        // const binaryIndex = 1 << (len - 1 -j); // 1 左移 len - 1 -j 位
+        if (i & (1 << (len - 1 -j))) {
+          s += arr[j]
+          temp.push(arr[j])
+        }
+      }
+      if (s == sum) {
+        res.push(temp)
+      }
+    }
+  }
+}
+```
+- [参考资料 排列数 和 组合数](https://oi-wiki.org/math/combinatorics/combination/#%E5%BC%95%E5%85%A5)
+
+- [参考资料 从数组中取 n 个数使得其和为 m](https://juejin.cn/post/6844903792782082055)
+
+``` md
+> 103. 
+- 
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+## nodejs 相关问题
+``` md
+> 1. Windows 怎么管理多版本的 nodejs
+- 通过 NVM node 版本管理工具
+
+- 设置镜像地址
+
+- 设置npm_mirror: nvm npm_mirror https://npmmirror.com/mirrors/npm/
+
+- 设置node_mirror: nvm node_mirror https://npmmirror.com/mirrors/node/
+```
+
+``` js
+> 2. NVM 常用命令
+- nvm list
+
+- nvm -v
+
+- nvm use 8.11.0
+
+- nvm install 8.11.0
+```
+
+``` md
+> 3. 安装 nvm 后，node 和 npm 命令报错，解决办法
+- 卸载 nvm，并删除相关的 环境变量 以及 以前安装过的 nodejs相关版本。
+
+- 注意安装好后需要用 nvm 配置 node 和 npm 镜像地址
+```
+- [参考资料 安装配置](https://blog.csdn.net/weixin_50632313/article/details/131527057)
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+## VSCode 相关问题
+``` md
+> 1. VSCode 终端无法识别 npm 命令，但是 管理员终端可以，解决措施
+- 修改 VSCode 的属性，使其以管理员身份运行 
+```
+- [参考资料 修改方法](https://blog.csdn.net/helwens/article/details/122082997)
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+## 开发者工具 相关问题
+``` md
+> 1. 浏览器如何清除缓存并硬性重新加载
+- 在开发者模式下，右键浏览器左上角的刷新按钮，选择 清除缓存并硬性重新加载。
+``` 
+
+``` md
+> 2. 浏览器中如何进行调试？
+- 通过跨步，下一步，步入，步出，进行调试。
+
+- 跨步：执行下一步，且不进入函数。
+
+- 下一步、步入：执行下一步，且进入函数内部。区别在于对异步函数的执行策略不同。下一步不会进入异步函数等待。而步入会进入异步函数中等待。
+
+- 步出：继续执行到当前函数的末尾。
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------
