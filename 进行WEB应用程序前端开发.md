@@ -40,6 +40,8 @@
 > 18. ES 6（ECMAScript 语言规范）读音： /ei/s/6/
 
 > 19. GUI(渲染器引擎) 读音: /ɡ/u/ɪ/
+
+> 20. 浏览器
 ```
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1822,8 +1824,157 @@ function search(arr, count, sum){
 - [参考资料 从数组中取 n 个数使得其和为 m](https://juejin.cn/post/6844903792782082055)
 
 ``` md
-> 103. 
-- 
+> 103. 你了解 JS 中的模块导出和导入吗?
+- 导出: 分为默认导出, 在声明前导出和独立导出
+
+- 导入: 分为默认导入, 整体导入, 独立导入和动态导入
+
+- 补充知识1: 导入存在导入提升, 因此以下代码是无效的(当需要按条件导入模块时, 建议使用动态导入)
+```
+``` js
+if (something) {
+  import {sayHi} from "./say.js"; // Error: import must be at top level
+}
+```
+``` md
+- 补充知识2: 当作为模块导入后, 模块内部的 this 指向为 未定义.
+
+- 补充知识3: JS 中的 this 指向: 指向未定义或指向调用者
+
+- 补充知识4: 每个模块都有自己的顶级作用域, 即模块中的方法和属性对其他模块是不可见的.
+
+- 补充知识5: 模块: 一段具有特定功能的代码块或文件.
+
+- 补充知识6: 模块代码仅在第一次导入时被解析
+
+- 补充知识7: 模块始终使用严格模式.
+
+- 补充知识8: 动态导入 import() 只是导入的一种特殊语法, 并不是一个函数, 类似的还有 super(). 因此，我们不能将 import 复制到一个变量中，或者对其使用 call/apply。因为它不是一个函数。
+```
+- [参考资料 JS 中的导出和导入](https://zh.javascript.info/modules)
+
+``` md
+> 104. JS 中的对象如何转换为原始值?
+- 三种方法
+```
+- [参考资料 JS 中的对象如何转换为原始值](https://zh.javascript.info/object-toprimitive)
+
+``` md
+> 105. 你了解 JS 中的 Symbol 类型吗?
+- Symbol 唯一标识符类型: 是 JS 中的一种基本数据类型.
+
+- 可以用于向对象中添加"隐藏"属性
+
+- 如果我们想要向“属于”另一个脚本或者库的对象添加一个属性，我们可以创建一个 symbol 唯一标识符并使用它作为属性的键, 避免导致对象属间的冲突.
+```
+- [参考资料 Symbol](https://zh.javascript.info/symbol)
+
+``` md
+> 106. JS 如何实现过滤字谜?
+- 思路:
+- 1. 单词解密(不区分大小写; 拆分单词; 字母排序; 拼接为新的单词): let newWord = word.toLowerCase().split('').sort().join(''); 
+
+- 5. 数组去重(通过 Set 集合实现去重). let wordArray = new Set(); wordArray.add(newWord);
+```
+- [参考资料 过滤字谜](https://zh.javascript.info/map-set)
+
+``` md
+> 107. 你了解 JS 中的 JSON 吗?
+- JSON 即 Javascript 对象通用数据格式: 可以实现将 JS 对象转换为 JSON 字符串(一种包含了对象属性的字符串). 
+
+- 使用 JSON 的目的, 就是为了便于进行网络传输, 减轻开发人员手动将对象转换为字符串的工作量.
+
+- 补充知识1: 对象调用 toString 方法, 打印出的为 [object Object] 形式, 是看不出该对象具有那些属性的.
+
+- 补充知识2: JSON.stringfy 方法转换得到的 JSON 字符串是不包含 JS 对象的方法的.
+
+- 补充知识3: JSON 格式具有两种方法, 字符串化方法和解析方法
+
+- 补充知识4: JSON 在进行字符串化一个对象时, 该对象不得有循环引用. 代码如下:
+```
+``` js
+let room = {
+  number: 23
+};
+
+let meetup = {
+  title: "Conference",
+  participants: ["john", "ann"]
+};
+
+meetup.place = room;       // meetup 引用了 room
+room.occupiedBy = meetup; // room 引用了 meetup
+
+JSON.stringify(meetup); // Error: Converting circular structure to JSON
+```
+- [参考资料 JSON](https://zh.javascript.info/json)
+
+``` md
+> 108. 你知道 JS 中函数的属性有哪些吗?
+- name 名称属性: 获取函数的名称
+
+- length 长度属性: 获取函数参数的长度
+
+- 自定义属性
+```
+- [参考资料 函数的属性](https://zh.javascript.info/function-object)
+
+``` md
+> 109. 你了解的 JS 中的常见错误(或异常)有哪些?
+- SyntaxError 语法错误: 不满足 JS 语法时容易出现.
+
+- ReferenceError 引用错误: 未定义变量而之间使用该变量容易出现.
+
+- TypeError 类型错误: 基本数据类型调用了引用数据类型的方法或属性时容易出现
+
+- RangeError 范围错误: 递归时容易出现.
+```
+- [参考资料 JS 中的常见错误](https://www.cnblogs.com/powertoolsteam/p/12486065.html)
+
+``` md
+> 110. 你了解 JS 中的 eval 吗?
+- eval 执行代码字符串: 很少使用了.
+```
+- [参考资料 eval](https://zh.javascript.info/eval)
+
+``` md
+> 111. 你了解 JS 中的 unicode 吗?
+- 是 JS 中的字符串的编码格式, 你可以通过使用 unicode 编码来表示一些复杂的符号.
+```
+- [参考资料 unicode](https://zh.javascript.info/unicode)
+
+``` md
+> 112. JS 如何表示任意大的整数?
+- 通过使用 BigInt 对象. 或者 BigInt 基本数据类型(即 之间在整数后加n).
+```
+- [参考资料 BigInt](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+
+``` md
+> 113. 你了解 JS 中的包装类吗?
+- 包装类: 增加了一些方法和属性得到的类, 即包装类.
+
+- JS 中的基本数据类型包装类: Number 数字类, String 字符串类, BigInt 大整数类, Boolean 布尔类, Symbol 唯一标识符类 
+```
+
+``` md
+> 114. 你了解 JS 中的 Proxy 和 Reflect 吗?
+- Proxy 代理对象: 用于代理一个对象, 然后去处理一些事情.
+
+- Reflect 反射对象: 用于简化 Proxy 代理对象. 代码如下 
+```
+``` js
+let user = {};
+
+Reflect.set(user, 'name', 'John');
+
+alert(Reflect.get(user, "name")); // John
+```
+``` md
+- 补充内容1: 通过 Reflect.set(target, prop); 方法, 可以实现 Vue 中的响应式数据
+```
+
+``` md
+> 115. 
 ```
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1888,3 +2039,442 @@ function search(arr, count, sum){
 ```
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
+
+## HTML 相关问题
+``` md
+> 1. 说说你对 HTML 语义化的理解 ？HTML5 新增了哪些语义化标签 ？
+> 1. 对语义化的理解 
+- HTML 语义化, 即 元素语义化, 赋予 HTML 元素, 特定的含义, 去做特定的事情.
+
+> 2. HTML 语义化的优点
+- 使得 HTML 代码更易维护.
+
+- 页面内容结构化, 没有 CSS 样式, 也能呈现出好的页面内容.
+
+- 更好的 SEO.
+```
+- [参考资料1 语义化](https://developer.mozilla.org/zh-CN/docs/Glossary/Semantics)
+
+- [参考资料2 语义化](https://github.com/YvetteLau/Step-By-Step/issues/8)
+
+``` md
+> 2. DOCTYPE 是干嘛的，都有哪些属性
+- DOCTYPE 即文档类型声明, 是用来声明文档类型的, 目的是防止浏览器在渲染文档时，切换到我们称为“怪异模式”的渲染模式(即非标准模式)。
+
+- 用法: <!DOCTYPE html>
+```
+- [参考资料1 DOCTYPE](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)
+
+- [参考资料2 DOCTYPE](https://www.freecodecamp.org/chinese/news/what-is-the-doctype-declaration-in-html/)
+
+``` md
+> 3. meta 标签是干什么的，都有什么属性和作用
+- meta 元素, 即元数据元素, 用来描述 HTML 文档的元素.
+
+> 具有的属性:
+- charset 字符属性: 该属性声明了文档的字符编码。
+
+- name 名称属性: name 作为元数据的名称.
+
+- content 内容属性: 用于描述 name 或 http-equiv 属性
+
+- http-equiv http 标头属性: 用于指定 HTTP 标头.(因为其所有允许的值都是特定 HTTP 标头的名称) 
+
+- 注意: 当存在 name 名称属性 或 http-equiv 标头属性时, 必须搭配 content 内容属性.
+
+- 补充信息1: 元数据, 描述数据的数据.
+```
+- [参考资料1 meta 元数据元素](https://juejin.cn/post/6844904083296370702)
+
+- [参考资料2 meta 元数据元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta#http-equiv)
+
+``` md
+> 4. 你了解哪些 HTML5 新特性
+- 元素语义化**核心**
+
+- WebStorage 本地存储
+
+- 增强型表单
+
+- 视频音频元素
+
+- 拖拽 API
+
+- 地理定位
+
+- ...
+```
+- [参考资料 HTML5 新特性](https://juejin.cn/post/7036257361417207821)
+
+``` md
+> 5. HTML 文档结构解释下
+- 
+<!--声明当前文档类型为 html5标准-->
+<!DOCTYPE html>
+<!--声明当前页面的语言类型-->
+<html lang="en">
+  <head>
+    <!--网页的编码集-->
+    <meta charset="UTF-8" />
+    <!--IE8及以上的版本按照最新的标准去渲染-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--用户移动端适配-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--网页标题-->
+    <title>艾编程</title>
+    <!--网页关键词-->
+    <meta name="Keywords" content="艾编程,WEB前端,Java架构师,Python课程" />
+    <!--网页描述-->
+    <meta name="description" content="为每个互联网人提供高质量的终身学习平台" />
+  </head>
+  <body>
+    ......
+  </body>
+</html>
+```
+- [参考资料 HTML 文档结构](https://www.arryblog.com/interview/htmlcss/html-html5.html#%E9%AB%98%E9%A2%91%E9%87%8D%E7%82%B9)
+
+``` md
+> 6. 说一下 href 和 src 的区别
+- src 源链接属性, 主要用来链接外部资源, 用于元素替换.
+
+- href 超文本引用属性, 主要用来连接元素和 HTML 文档.
+```
+- [参考资料 href 超文本引用属性和 src 源链接属性](https://blog.51cto.com/u_15483654/4907038)
+
+``` md
+> 7. script 标签放在 head 那里怎么解决加载问题
+- 通过使用 defer 延迟属性 或 async 异步属性.
+
+- defer 延迟属性: 异步下载 JS 脚本, 下载完毕后, 等待 DOM 构建结束后, 执行该脚本.
+
+- async 异步属性: 异步下载 JS 脚本, 下载完毕后, 立刻执行该脚本.
+```
+- [参考资料 defer 延迟属性和 async 异步属性](https://zh.javascript.info/script-async-defer)
+
+``` md
+> 8. 浏览器中渲染引擎负责什么?
+- 负责渲染 HTML 元素和 CSS 样式规则.
+```
+- [参考资料 渲染引擎](https://miguoer.github.io/blog/web-front/framework/framework-v8-02.html#%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%8F%8A-webkit-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84)
+
+``` md
+> 9. 了解过不同图片格式的区别吗
+- .gif 动图: 可以实现动画效果
+
+- .jpg 有损压缩: 反复保存图片质量下降明显
+
+- .png 无损压缩: 高保真
+
+- .webp 谷歌格式: 支持 动图, 有损压缩, 无损压缩, 但浏览器兼容性相对而言不好
+
+- .svg 矢量图: 可伸缩性, 体积小, 与 DOM 无缝衔接
+```
+- [参考资料 了解过不同图片格式的区别吗](https://www.arryblog.com/interview/htmlcss/html-html5.html#%E9%AB%98%E9%A2%91%E9%87%8D%E7%82%B9)
+
+``` md
+> 10. 精灵图的原理和优缺点？
+- spirit 精灵图: 多张合并为一张图后形成的图, 成为 spirit 精灵图.
+
+- 优点在于减少网络请求, 但是确定也很明显, 可维护性差.
+```
+- [参考资料1 spirit 精灵图](https://github.com/haizlin/fe-interview/issues/55)
+
+- [参考资料2 spirit 精灵图](https://www.arryblog.com/interview/htmlcss/html-html5.html#%E9%AB%98%E9%A2%91%E9%87%8D%E7%82%B9)
+
+``` md
+> 11. “ data- *” 属性的作用是什么 ？ 
+- data-* 数据属性: 使得我们可以在所有的 HTML 元素上嵌入自定义属性. 便于实现 HTML 和 DOM 之间的私有数据交互.
+```
+- [参考资料1 data-* 数据属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/data-*)
+
+- [参考资料2 data-* 数据属性](https://www.arryblog.com/interview/htmlcss/html-html5.html#%E9%AB%98%E9%A2%91%E9%87%8D%E7%82%B9)
+
+``` md
+> 12. HTML 中的 void 元素是什么 ？
+- 不需要关闭的元素, 就是 void 空元素
+
+- 例如: <br />、<img />、<hr />
+```
+
+``` md
+> 13. HTML5 中的内联元素和块级元素分别有哪些 ？
+- inline 内联元素: 内联元素只占用内容绝对必要的空间
+
+- block 块级元素: 块元素从新行开始并占用可用页面的整个宽度
+```
+- [参考资料 HTML5 中的内联元素和块级元素分别有哪些 ？](https://www.arryblog.com/interview/htmlcss/html-html5.html#html-html5-%E5%9F%BA%E7%A1%80)
+
+## CSS 相关问题
+- [参考资料 CSS 相关问题](https://www.arryblog.com/interview/htmlcss/flex-grid-layout.html)
+``` md
+> 1. 什么是 CSS 盒模型 ？
+- 在进行 CSS 样式设计和布局时, 使用的术语. 通过把 HTML 元素看作一个个盒子, 进行样式设计和布局.
+
+- 补充知识1: 盒模型分为标准盒模型(W3C盒模型)和怪异盒模型(IE 盒模型)
+
+- 标准盒子: box-sizing: content-box; 盒子大小是外扩的.
+
+- 怪异盒子: box-sizing: box-border; 盒子大小是内缩的.
+
+- 如何切换: 通过使用 box-sizing 样式进行切换.
+```
+
+``` md
+> 2. margin 纵向重叠问题 ？
+- margin 外边距样式是存在边距重叠问题的, 可以通过改为设置 padding 内边距解决该问题.
+
+- 补充知识1: margin 外边距是可以为负值的.
+```
+
+``` md
+> 3. 你了解哪些布局方式？
+- 页面结构方面: 
+
+- CSS 样式方面:
+
+```
+
+``` md
+> 4. 说一下你对 Flex 布局的理解，以及其中属性的默认值 ？
+- flex 弹性布局: 通过水平轴和垂直轴实现布局.
+
+- 关键在于掌握 Flex 的容器样式和 Flex 的项样式, 注意区别.
+```
+
+``` md
+> 5. CSS 实现两栏布局(left 左栏, right 右栏)的方法 ?
+- flex 弹性布局
+
+- table 表格布局
+
+- grid 网格布局
+
+- float 浮动布局
+
+- position 定位布局
+```
+
+``` md
+> 5. CSS 实现三栏布局(left 左栏, middle 中间栏, right 右栏)的方法 ?
+- flex 弹性布局
+
+- table 表格布局
+
+- grid 网格布局
+
+- float 浮动布局
+
+- position 定位布局
+```
+
+``` md
+> 6. flex 怎么实现盒子 1 在最左边，2 、3 在最右边?
+- 本质属于两栏布局的变体.(通过将2, 3 看作一个 right 右边栏.)
+```
+
+``` md
+> 7. 如何解决 flex 布局 7 个元素使用 space-between 最后一行两边分布的问题？
+- 通过添加 n-2 个 span 元素.
+```
+
+``` md
+> 8. flex 实现 8 个元素分两行排列 每行 4 个平均分布-自适应
+```
+
+``` md
+> 9. CSS 样式的选择器有哪些?
+- 元素选择器
+元素
+
+- 类选择器
+.
+
+- id 选择器
+#
+
+- 属性选择器
+[]
+
+- 列表选择器: 并集选择器
+,
+
+- 后代选择器: 选择所有后代
+空格
+
+- 子代选择器: 只会选择直接后代
+>
+
+- 伪类选择器: 附加至选择器末的关键词，允许你对被选择元素的特定部分修改样式
+:
+
+- 伪元素选择器: 用来创建一个伪元素
+::
+```
+- [参考资料 选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_selectors)
+
+``` md
+> 9. 说说你对 Grid 网格布局的理解 ？
+- 通过行, 列实现布局; 注意区分网格容器和网格项的区别
+```
+
+``` md
+> 10. CSS 单位 px em rem vw vh 的区别和联系
+- px 像素: 相对于屏幕分辨率
+
+- em 父元素相对单位: 相对于父元素的字体大小
+
+- rem 根元素相对单位: 相对于根元素的字体大小
+
+- vw vh 窗口宽高: 相对于视窗宽度和高度的百分比
+```
+
+``` md
+> 11. 响应式布局如何实现及原理？
+- 相对单位实现
+
+- 媒体查询布局实现
+
+- flex 弹性布局
+```
+
+``` md
+> 12. CSS 定位 position 有几种属性，以及应用场景，最新的有没有了解过 ？
+- relative 相对定位: 相对于自身位置进行调整.
+
+- absolute 绝对定位: 相对于已定位的父元素位置进行调整. 
+
+- fixed 固定定位: 相对于可视窗口位置进行调整.
+
+- sticky 粘性定位: 相对于滚动位置进行调整.
+```
+
+``` md
+> 13. 元素水平垂直居中的方式
+```
+
+``` md
+> 14. 一个容器内部有一些文字，如何让多行文字垂直居中
+```
+
+``` md
+> 15. CSS 画图
+```
+- [参考资料 前端绘图](https://www.cnblogs.com/jerry-mengjie/p/15853393.html)
+
+``` md
+> 16. min-width、max-width、width 的包含（优先级）关系
+- min-width 和 max-width 的优先级都高于 width。即时 width 后面加上!important。
+```
+
+``` md
+> 17. display 和 visibility 的区别，那么这两个在浏览器渲染的的过程中有什么区别呢 ？
+- 前者不会出现在渲染树中, 而后者会出现在渲染树中.
+
+- 前者会导致回流和重绘, 后者只会产生重绘.
+```
+
+``` md
+> 18. 什么是回流（重排）和 重绘
+- 当渲染树中的元素位置发生改变时, 重新计算元素位置过程称为回流.
+
+- 当渲染树中的元素样式改变但是位置没变, 重新赋予样式的过程称为重绘.
+```
+
+``` md
+> 19. line-height 继承问题 ？
+- 继承父元素的 line-height 行高.
+```
+
+``` md
+> 20. 什么是 z-index，它是如何工作的 ？
+- 用于指定元素在 z 轴的顺序.
+```
+
+``` md
+> 21. CSS 选择器权重和优先级
+- !important 最高
+
+- 然后是, 行内样式
+
+- 然后是 一级(ID 选择器), 二级(类选择器等), 三级(元素选择器等), 四级(后代选择器等) 权重
+```
+
+``` md
+>  22. css 样式隔离，怎么解决样式隔离
+- 
+```
+
+``` md
+> 23. 浏览器如何确定哪些元素与 CSS 选择器匹配 ？
+- 浏览器从最右边到左边匹配选择器
+```
+
+``` md
+> 24. 为什么我们更推荐外部 CSS 或 Javascript 而不是内联 ？
+- 难以为维护.
+
+- 并且由于 HTML 代码永远不会被缓存, 如果使用内联的化, 会它增加点击网页时的 https 请求.
+```
+
+``` md
+> 25. Reset 与 Normalize CSS 的区别？它们有何不同 ？
+- Reset CSS：重置浏览器的内置样式.
+
+- Normalize CSS: 用于规范浏览器之间的内置样式.
+```
+
+``` md
+> 26. CSS 优化、提高性能的方法有哪些 ？
+- 减少选择器的层级
+
+- 进行样式和内容的分离
+
+- 减少 CSS 代码量, 活用 CSS 的继承.
+```
+
+## 浏览器 相关问题
+``` md
+> 1. 从输入 URL 到页面呈现的全过程
+- 浏览器的执行过程
+```
+- [参考资料 浏览器的执行过程](https://github.com/yd160513/blog/issues/17)
+
+``` md
+> 2. 说说你知道的浏览器缓存，项目中是如何实践的
+- 
+```
+
+# 其他问题
+``` md
+> 1. 磁盘、硬盘和内存区别
+- 首先, 它们都是用于保存计算机信息的硬件.
+
+- 内存: 指计算机的内部存储器
+
+- 外存: 指计算机的外部存储器, 如磁盘
+
+- 磁盘: 指硬盘和软盘
+
+- 硬盘: 指固态硬盘和机械硬盘
+
+- 软盘: 如 U 盘, 一般是存放于机箱之外的.
+
+[
+  内存,
+
+  外存{
+    磁盘{
+      硬盘{
+        固态硬盘,
+        机械硬盘
+      },
+      软盘{
+        ...
+      }
+    },
+    ...
+  }
+]
+```
+- [参考资料 磁盘、硬盘和内存区别](https://blog.51cto.com/frankch/1708041)
