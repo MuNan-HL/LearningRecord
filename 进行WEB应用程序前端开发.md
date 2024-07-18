@@ -44,6 +44,10 @@
 > 20. 浏览器
 
 > 21. Git(分布式版本控制系统)
+
+> 22. SASS(CSS 预处理器) 读音: /s/'ɔ/s/
+
+> 23. SCSS(SASS 语法) 读音: /s/kæ/s/
 ```
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2463,7 +2467,165 @@ alert(Reflect.get(user, "name")); // John
 > 
 ```
 
-# 其他问题
+## SASS 相关问题
+- [参考资料 SASS](https://www.freecodecamp.org/chinese/news/the-beginners-guide-to-sass/)
+``` md
+> 1. SASS 是什么?
+- CSS 预处理器, 可以使得你的 CSS 更好用. 
+
+- SASS（英文全称是Syntactically Awesome Style Sheets）是一种CSS预处理器，使用它可以使你的CSS拥有超能力。
+```
+
+``` md
+> 2. SCSS 是什么?
+- 是一种 SASS 的语法. SASS 还有一种语法为缩进语法. 但是 SCSS 使用的人更多.
+
+- 代码如下
+```
+``` scss
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+  }
+}
+```
+
+``` md
+> 3. 你为什么使用 SASS ?
+- 1. 兼容性好
+
+- 2. 可以提高 CSS 开发效率(可复用)
+```
+
+``` md
+> 4. 你怎么理解 SASS 的特性?
+- 1. $ 变量与 @function 函数
+
+- 2. 嵌套
+
+- 3. @import 导入: 支持导入外部文件
+
+- 4. @mixin + @include 复用: 支持复用代码块
+```
+
+``` md
+> 5. VScode 怎么使用 SASS?
+- 通过按照对应的插件, 并修改 setting.json 文件.
+```
+
+
+## NodeJS 相关问题
+``` md
+> 1. 你怎么理解客户端和服务端?
+- 客户端: 用户使用的网络设备称为客户端.
+
+- 服务端: 为客户端提供服务的网络设备称为服务端.
+```
+
+``` md
+> 2. 为什么选择 NodeJS 用于服务端开发?
+- 前端开发人员接受的更快.
+```
+
+``` md
+> 3. NodeJS 是什么?
+- JS 代码的运行环境. 可以在服务端运行.
+```
+
+``` md
+> 4. npm 是什么?
+- node 依赖包管理工具.
+```
+
+``` md
+> 5. 为什么要使用这些依赖包呢?
+- 为了加快项目的开发进度. 在现代软件工程中, 项目开发不会从 0 开始的, 要学会善用框架.
+```
+
+``` md
+> 6. commonJS 是什么?
+- NodeJS 中的模块管理工具.
+
+- 补充知识1: 在 JS 中有 ES6 新增的模块管理工具, export 和 import. 注意和 commonjs 区分, 不要混淆奥.
+
+- 补充知识2: 什么是模块? 用于完成特定功能的文件或者代码块.
+
+- 补充知识3: NodeJS 只有在执行到 require 函数后, 才会加载并执行模块代码.
+```
+
+``` md
+> 7. commonJS 语法
+- 通过 module.exports 或 exports 语法导出模块中的属性和方法
+
+- 通过 require 函数导入模块
+
+- 补充知识1: 模块只会被导入一次, 后续会使用模块缓存获取模块中的属性和方法. 为了避免反复加载同一个模块，nodejs默认开启了模块缓存，如果加载的模块已经被加载过了，则会自动使用之前的导出结果.
+```
+``` js
+导出语法:
+var count = 0; //需要隐藏的内部实现
+
+// 要暴露给外部的接口
+function getNumber () {
+    count++;
+    return count;
+}
+
+// exports = {}
+exports.getNumber = getNumber
+exports.abc = "abc"
+```
+``` js
+导入函数:
+var util = require("./util");
+
+console.log(util)
+console.log(util.abc)
+console.log(util.getNumber())
+console.log(util.getNumber())
+console.log(util.getNumber())
+console.log(util.count)
+
+// node index.js 输出
+{ getNumber: [Function: getNumber], abc: 'abc' }
+abc
+1
+2
+3
+undefined
+```
+- [参考资料 commonJS](https://juejin.cn/post/7029133831328399374)
+
+``` md
+> 8. NodeJS 和 JS 的区别?
+- JS: JavaScript语法 + Web API(DOM + BOM), 主要运行于客户端.
+
+- NodeJS: JavaScript语法 + NodeJS API, 主要运行于服务端.
+```
+
+## HTTP 相关问题
+``` md
+> HTTP 是什么?
+- 超文本传输协议.
+```
+
+``` md
+> HTTP 的执行过程?
+- 
+```
+
+
+## 其他问题
 ``` md
 > 1. 磁盘、硬盘和内存区别
 - 首先, 它们都是用于保存计算机信息的硬件.
