@@ -48,6 +48,10 @@
 > 22. SASS(CSS 预处理器) 读音: /s/'ɔ/s/
 
 > 23. SCSS(SASS 语法) 读音: /s/kæ/s/
+
+> 24. SSR(服务端渲染 Server-Side Rendering) 读音: /s/si/ri/
+
+> 25. webpack(Web 应用程序打包和部署工具) 读音: /web/pack/
 ```
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
@@ -60,11 +64,13 @@
 - [参考资料3 面试](https://vue3js.cn/interview/)
 ``` js
 > 1. JS 如何获取时间戳？ 
-- let timestamp=new Date().getTime(); //1610075969354 
+- let timestamp = +new Date(); 
 
-- let timestamp = Date.parse(new Date()); //1610075969000 
+- let timestamp = new Date().getTime(); 
 
-- let timestamp = (new Date()).valueOf(); //1610075969354 
+- let timestamp = Date.parse(new Date());  
+
+- let timestamp = (new Date()).valueOf(); 
 ```
 - [参考资料 时间戳](https://blog.csdn.net/qq_30671099/article/details/112363421)
 
@@ -1980,9 +1986,18 @@ alert(Reflect.get(user, "name")); // John
 ```
 
 ``` md
-> 115. 
-```
+> 115. 你知道 BOM 中的 location 对象吗? 
+- location 对象: 描述 URL 数据的对象.
 
+- 补充知识1: location.hash: 即 URL 中以 # 开头的部分
+```
+- [参考资料1 location 对象](https://juejin.cn/post/7147624595531497502)
+
+- [参考资料2 location 对象](https://developer.mozilla.org/zh-CN/docs/Web/API/Location)
+
+``` md
+> 
+```
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## nodejs 相关问题
@@ -2621,9 +2636,586 @@ undefined
 
 ``` md
 > HTTP 的执行过程?
-- 
+- 客户端和服务端的通信过程.
 ```
 
+## Vue 相关问题
+- [参考资料 Vue 官网](https://cn.vuejs.org/)
+
+- [参考资料 Vue 面试题](https://vue3js.cn/interview/vue/vue.html#%E4%B8%80%E3%80%81%E4%BB%8E%E5%8E%86%E5%8F%B2%E8%AF%B4%E8%B5%B7)
+
+``` md
+> 1. Vue 是什么?
+- Web 应用程序前端框架, 可以高效的进行用户界面的开发.
+```
+
+``` md
+> 2. 有使用过vue吗？说说你对vue的理解
+- 1. 一种 Web 应用程序前端框架, 用于帮助开发人员高效的进行 Web 界面开发.
+
+- 2. Vue 的核心特性数据驱动, 组件化和声明式渲染.
+
+- 补充知识1: 数据驱动, 即 Model View ViewModel. Model 模型层和 View 视图层之间通过 ViewModel 视图模型层进行自动通信, 使得开发人员可以专注于业务逻辑和数据处理.
+```
+![MVVM](image-25.png)
+- [参考资料 MVVM](https://juejin.cn/post/6844903929298288647)
+``` md
+- 补充知识2: 组件化, 即利用组件化的编程思想, 进行编程, 将一个页面看作一个个独立的组件, 提高可维护性以及系统的耦合性.
+
+- 补充知识3: 声明式渲染, 即模板渲染, 提高 HTML 模板以及特定的 Vue 指令实现 HTML 元素渲染, 而不必专注于操作 Web API.
+```
+
+``` md
+> 3. 你对SPA单页面的理解，它的优缺点分别是什么？如何实现SPA应用呢
+- 1. SPA 即单页面应用程序, 与 MPA 相比, 避免了多页面之间的频繁切换, 提高了用户的体验. 其中 Vue 就属于单页面应用程序开发框架.
+
+- 2. SPA 单页面应用程序的缺点是存在对 SEO 浏览器搜索引擎优化支持不好, 以及首次渲染时间较长的问题
+
+- 3. SPA 单页面应用程序的实现原理是利用 Vue-router 实现.(Vue-router 有 hash #模式或 history 浏览器历史模式两种.)
+```
+![Vue 实现 SPA 的原理](image-26.png)
+
+``` md
+> 4. 说说你对 Vue 生命周期的理解
+- 1. Vue 的生命周期, 即一个 Vue 实例对象从创建到销毁的过程.
+
+- 2. Vue 的生命周期: 创建时期, 挂载时期, 更新时期, 销毁时期,
+
+- 创建时期: 实例化 Vue 实例对象, 并创建响应式数据.(beforeCreate -> created)
+
+- 挂载时期: 挂载 DOM 元素在 Vue 的 el 配置项上.(beforeMount -> mounted)
+
+- 更新时期: 更新 View 视图层数据.(beforeUpdate -> updated)
+
+- 销毁时期: 销毁 Vue 实例对象, 但是 DOM 元素没有被销毁.(beforeDestroy -> destroyed)
+
+- 补充知识1: 常用的钩子, created 创建响应式数据后, mounted 挂载 DOM 元素后.
+
+- 补充知识2: 你了解 Vue 中的 el 配置项吗?
+- 1. el, 即 Vue 的一个配置项, 可以为 Vue 实例提供一个可以挂载的目标. 可以是 CSS 选择器，也可以是一个 HTMLElement 实例。
+
+- 2. 在实例挂载之后，元素可以用 vm.
+
+- 补充知识3: 你怎么理解 Vue 中的 vm 对象和 vc 对象?
+- 1. vm 即 Vue 实例对象
+
+- 2. vc 即 VueComponent Vue 组件对象, 其原型属性指向的原型对象即 vm.
+
+- 补充知识4: JS 中的 new 关键字的底层实现原理你了解吗?
+- 1. 创建空的 Object 对象
+
+- 2. 确定对象的原型属性的指向
+
+- 3. 确定对象的 this 指向
+
+- 4. 返回该对象或者 this
+
+- 补充知识5: JS 中的 this 对象的值(或指向)?
+- 1. undefined 未定义
+
+- 2. 调用者
+```
+- [参考资料 el 配置项](https://blog.csdn.net/Amnesiac666/article/details/120290398)
+
+- [参考资料 vm 和 vc](https://juejin.cn/post/7173641482639785992)
+
+``` md
+> 5. 为什么 Vue 中的 v-if 和 v-for 不建议一起用?
+- 1. 因为没有意义, v-if 表示的是是否渲染元素, v-for 表示的是列表渲染, 她两用在一起本身就是语义冲突的.
+
+- 补充知识1: v-for 的优先级是大于 v-if 的.(源码可得)
+```
+``` vue
+源码部分:
+export function genElement (el: ASTElement, state: CodegenState): string {
+  if (el.parent) {
+    el.pre = el.pre || el.parent.pre
+  }
+  if (el.staticRoot && !el.staticProcessed) {
+    return genStatic(el, state)
+  } else if (el.once && !el.onceProcessed) {
+    return genOnce(el, state)
+    <!-- v-for 的优先级是大于 v-if 的 -->
+  } else if (el.for && !el.forProcessed) {
+    return genFor(el, state)
+  } else if (el.if && !el.ifProcessed) {
+    return genIf(el, state)
+  } else if (el.tag === 'template' && !el.slotTarget && !state.pre) {
+    return genChildren(el, state) || 'void 0'
+  } else if (el.tag === 'slot') {
+    return genSlot(el, state)
+  } else {
+    // component or element
+    ...
+}
+```
+
+``` md
+> 5. SPA 首屏加载速度慢的怎么解决？
+- 1. 首屏加载时间, 即从用户输入 url 地址, 到页面渲染完成的时间. 首屏加载可以说是用户体验中最重要的环节
+
+- 2. 可以通过 DOMContentLoad 或者 performance 来计算出首屏时间
+```
+``` js
+// 方案一：
+document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('first contentful painting');
+});
+// 方案二：
+performance.getEntriesByName("first-contentful-paint")[0].startTime
+
+// performance.getEntriesByName("first-contentful-paint")[0]
+// 会返回一个 PerformancePaintTiming的实例，结构如下：
+{
+  name: "first-contentful-paint",
+  entryType: "paint",
+  startTime: 507.80000002123415,
+  duration: 0,
+};
+```
+``` md
+> 3. 首屏加载慢的原因
+- 1. 网络原因
+
+- 2. 待加载的资源过大
+
+- 3. ...
+
+> 4. 解决措施
+- 1. 资源加载方面的优化
+- 1. 减小体积, 减小首屏文件的体积
+
+- 2. 按需加载, 相关资源按需加载
+
+- 3. 本地缓存, 静态资源启用本地缓存
+
+- 2. 页面渲染方面的优化
+```
+
+``` md
+> 6. 为什么 Vue 中的 data 配置项是一个函数而不是一个对象?
+- 1. 因为是了避免数据污染, 防止多个组件实例对象之间共用一个 data.
+```
+
+``` md
+> 7. Vue2 中给对象添加新属性, 界面不刷新, 是为什么?
+- 1. 因为该属性并没有通过 Vue 底层的 Object.defineProperty 设置成响应式数据, 因此界面没有刷新数据.
+
+- 2. 解决方案:
+- 1. Vue.set 方法 或者 this.$set 方法
+- 1. 通过Vue.set向响应式对象中添加一个property，并确保这个新 property同样是响应式的，且触发视图更新
+- 2. Vue.set(target, propertyName/index, value)
+
+- 2. Object.assign 指派复制方法
+- 1. 直接使用Object.assign()添加到对象的新属性不会触发更新, 应创建一个新的对象，合并原对象和混入对象的属性
+- 2. this.someObject = Object.assign({},this.someObject,{newProperty1:1,newProperty2:2 ...})
+
+- 3. $forceUpdate 强制更新方法
+- 1. 触发 update 生命周期, 更新 View 视图层和 model 模型层.
+
+- 2. 代码示例如下:
+```
+``` js
+<el-select 
+  v-model="reqData.coupon_code" 
+  class="w160"
+  @change="$forceUpdate()"
+  placeholder="请选择订单类型"
+  size="small">
+    <el-option
+       v-for="(item,index) in orderList"
+       :key="index"
+       :label="item.name"
+       :value="item.id">
+    </el-option>
+</el-select>
+
+// 或者
+
+this.$forceUpdate();
+```
+- [参考资料 $forceUpdate 强制更新方法](https://juejin.cn/post/7083313677201309727)
+
+``` md
+> 8. Vue 中组件和插件有什么区别?
+- 1. 组件, 就是一个 .vue 文件. 使用组件的优点是:
+- 1. 提高了项目的可维护性.
+
+- 2. 降低了系统的耦合性.
+
+- 2. 插件, 对 Vue 本身功能的增强或补充.
+
+- 3. 组件和插件的区别在于
+- 1. 使用场景不同
+- 1. 组件用于业务
+
+- 2. 插件用于增强 Vue 本身的功能
+
+2. 编写形式不同
+
+3. 注册形式不同
+- 1. 组件, 全局注册和局部注册
+
+- 2. 插件, Vue.use 方法
+```
+
+``` md
+> 9. Vue2 组件间的通信方式有哪些?
+- 1. 父子组件通信
+
+- 2. 兄弟组件通信
+
+- 3. 直系上下级组件通信
+
+- 4. Vuex 状态仓库
+```
+
+``` md
+> 10. 说说你对双向数据绑定的理解?
+- 1. 单向数据绑定, 即 Model 模型层绑定到 View 视图层, 即当我们用 JavaScript 代码更新 Model 时，View 就会自动更新.
+
+- 2. 双向数据绑定, 在单向数据绑定的基础上, 当用户更新了 View 视图层，Model 模型层的数据也自动被更新了.
+
+- 3. 双向数据绑定的原理
+- 1. 通过 MVVM 模型实现. 由 ViewModel 视图模型层在数据变化后更新视图和在视图变化后更新数据. 该功能主要由监听器和解析器实现.
+
+- 4. Vue 实现双向数据绑定的执行过程
+```
+![Vue 实现双向数据绑定的执行过程](image-27.png)
+
+``` md
+> 11. 说说你对 nextTick 函数的理解?
+- 1. nextTick 就是一个异步微任务, 通过执行 nextTick 函数, 会将其内的函数看作一个微任务放入异步任务队列当中, 等待下次的 DOM 更新循环结束后, 执行该函数.
+```
+
+``` md
+> 12. 说说你对 mixin 的理解, 有什么应用场景?
+- 1. mixin 混入类, 为了实现相似代码的复用.
+
+- 2. 在 Vue 中实现 mixin 混入, 代码示例如下
+```
+``` js
+// MyMixin
+var myMixin = {
+  created: function () {
+    this.hello()
+  },
+  methods: {
+    hello: function () {
+      console.log('hello from mixin!')
+    }
+  }
+};
+
+// 全局混入
+Vue.mixin({
+  created: function () {
+      console.log("全局混入")
+    }
+});
+
+// 局部混入
+Vue.component('componentA',{
+  mixins: [myMixin]
+});
+```
+``` md
+- 3. 注意事项
+- 1. 当组件存在与mixin对象相同的选项的时候，进行递归合并的时候组件的选项会覆盖mixin的选项
+
+- 2. 但是如果相同选项为生命周期钩子的时候，会合并成一个数组，先执行mixin的钩子，再执行组件的钩子
+
+- 4. 使用场景
+- 1. 当你遇到在不同的组件中经常需要用到相同或者相似的 JS 代码，且这些代码的功能相对独立. 这时，就可以通过 Vue 的 mixin 混入功能将相同或者相似的代码进行封装.
+```
+
+``` md
+> 13. 说说你对 slot 的理解? slot 的使用场景有哪些?
+- 1. slot 插槽, 在组件使用, 用于给后期可能出现的元素占位.
+
+- 2. slot 插槽分为默认插槽, 具名插槽和作用域插槽三种.
+
+- 3. 在 Vue 中每种 slot 插槽如何使用?(详细见参考资料)
+```
+- [参考资料 slot 插槽](https://juejin.cn/post/6844903555837493256)
+
+``` md
+> 14. 你了解 Vue.observable 吗?
+- 1. Vue 中实现组件通信的另一种方式. 可以看作简化版的 Vuex.
+
+- 2. 代码示例:
+```
+``` js
+// 引入vue
+import Vue from 'vue
+// 创建state对象，使用observable让state对象可响应
+export let state = Vue.observable({
+  name: '张三',
+  'age': 38
+})
+// 创建对应的方法
+export let mutations = {
+  changeName(name) {
+    state.name = name
+  },
+  setAge(age) {
+    state.age = age
+  }
+}
+```
+``` js
+<template>
+  <div>
+    姓名：{{ name }}
+    年龄：{{ age }}
+    <button @click="changeName('李四')">改变姓名</button>
+    <button @click="setAge(18)">改变年龄</button>
+  </div>
+</template>
+
+import { state, mutations } from '@/store
+export default {
+  // 在计算属性中拿到值
+  computed: {
+    name() {
+      return state.name
+    },
+    age() {
+      return state.age
+    }
+  },
+  // 调用mutations里面的方法，更新数据
+  methods: {
+    changeName: mutations.changeName,
+    setAge: mutations.setAge
+  }
+}
+```
+
+``` md
+> 15. 你知道 Vue 中的 key 的原理吗? 说说你的理解
+- 1. 就是为了避免 Vue 去使用"就地复用"的策略去更新已经渲染过的元素列表, 防止 View 视图层的数据不显示的问题.
+
+- 2. "就地复用"的渲染策略, 当去更新已经渲染过的元素列表时, 如果数据项的顺序被改变, Vue 将不会移动 DOM 元素来匹配数据项的顺序, 而是简单复用此处每个元素, 并且确保它在特定索引下显示已被渲染过的每个元素. 
+```
+
+``` md
+> 16. 怎么缓存当前组件? 缓存后怎么更新? 说说你对 keep-alive 的理解
+- 1. keep-alive 保持活性组件, 是 Vue 中的一个内置组件, 用于保持组件的状态.
+
+- 2. 示例: 从首页–>列表页–>商详页–>返回到列表页(需要缓存)–>返回到首页(需要缓存)–>再次进入列表页(不需要缓存)，这时候可以按需来控制页面的keep-alive.
+```
+
+``` md
+> 17. Vue 常用的修饰符有哪些? 有什么应用场景?
+- 1. 常用修饰符父类: 表单修饰符, 事件修饰符, 鼠标按键修饰符, 键盘修饰符, v-bind修饰符
+
+- 2. 常用修饰符如下: 
+- 1. .stop：阻止事件冒泡
+
+- 2. .native：绑定原生事件
+
+- 3. .once：事件只执行一次
+
+- 4. .self ：将事件绑定在自身身上，相当于阻止事件冒泡
+
+- 5. .prevent：阻止默认事件
+
+- 6. .caption：用于事件捕获
+
+- 7. .keyCode：监听特定键盘按下
+
+- 8. .right：右键
+```
+
+``` md
+> 18. 你有写过自定义指令吗？自定义指令的应用场景有哪些？
+- 1. Vue 指令是以 v-* 开头. 如 v-if, v-for 等
+
+- 2. 应用场景
+- 1. 防抖 v-debounce
+
+- 2. 节流 v-throttle
+
+- 3. 图片懒加载 v-lazy
+
+- 4. 自动获取焦点 v-focus
+
+- 5. ...
+
+- 3. 如何实现自定义指令, 代码如下
+```
+``` js
+// 全局注册
+// 注册一个全局自定义指令 `v-focus`
+Vue.directive('focus', {
+  // 当被绑定的元素插入到 DOM 中时……
+  inserted: function (el) {
+    // 聚焦元素
+    el.focus()  // 页面加载完成之后自动让输入框获取到焦点的小功能
+  }
+});
+```
+``` js
+// 局部注册
+directives: {
+  focus: {
+    // 指令的定义
+    inserted: function (el) {
+      el.focus() // 页面加载完成之后自动让输入框获取到焦点的小功能
+    }
+  }
+}
+```
+``` js
+// 使用示例:
+<input v-focus />
+```
+
+``` md
+> 19. Vue2 中的过滤器了解吗？过滤器的应用场景有哪些？
+- 1. 过滤器, 即安装在输送数据的管道上的装置, 用于去掉不需要的数据.
+
+- 2. 过滤器的应用场景: 格式化数据
+
+- 3. Vue2 中如何使用? 代码示例: 
+```
+``` js
+// 局部定义
+filters: {
+  capitalize: function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+  }
+};
+```
+``` js
+// 全局定义
+Vue.filter('capitalize', function (value) {
+  if (!value) return ''
+  value = value.toString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+});
+```
+``` js
+// 使用示例, 其中 | 表示管道
+<!-- 在双花括号中 -->
+{{ message | capitalize }}
+
+<!-- 在 `v-bind` 中 -->
+<div v-bind:id="rawId | capitalize"></div>
+```
+``` md
+- 补充知识1: 多个过滤器可以串联
+
+- 补充知识2: 过滤器可以接受多个参数. 但需要注意的是, 过滤器默认就存在一个参数, 就是管道符前的数据, 比如代码示例中的 message 或者 id
+```
+
+``` md
+> 20. 什么是虚拟 DOM？如何实现一个虚拟 DOM？说说你的思路
+- 1. 虚拟 DOM, 是对真实 DOM 的抽象. 通过 diff 算法来减少浏览器操作真实 DOM 所带来的代价, 同时抽象了原本的渲染过程，实现了 DOM 跨平台的能力，而不仅仅局限于浏览器的 DOM，可以是安卓和 IOS 的原生组件，可以是近期很火热的小程序，也可以是各种GUI.
+
+- 2. 实现虚拟 DOM 的思路: **待补充**
+```
+- [参考资料 虚拟 DOM](https://juejin.cn/post/6994959998283907102)
+
+``` md
+> 21. 你了解 vue 的 diff 算法吗？说说看
+- 1. diff 算法, 一种多棵树的节点比较算法, 算法思想是同层双向比较.(相同的就复用旧的, 不相同的就直接创建新的)
+
+- 补充知识1: 深度优先算法, 一种树或图的遍历算法. 算法思想是 ... 待补充 
+```
+- [参考资料 diff 算法](https://juejin.cn/post/6994959998283907102)
+
+
+``` md
+> 22. Vue 项目中有封装过 axios 吗？主要是封装哪方面的？
+- 1. axios 网络请求库. 
+
+- 2. 你为什么要封装 axios 呢? axios 本身的 API 就很友好了, 你完全可以很轻松地在项目中直接使用. 
+- 1. 为了提高代码质量, 和开发效率, 减少重复的工作.
+
+- 2. 因为当你多做几个项目之后, 你会发现如果没有二次封装, 那么每发起一次 HTTP 网络请求，就要把这些比如设置超时时间、设置请求头、根据项目环境判断使用哪个请求地址、错误处理等等操作，都需要写一遍.
+
+- 3. 你是如何封装 axios 的? **按需封装**
+- 1. 封装 request 请求拦截器, 封装 token 令牌拦截机制
+
+- 2. 封装 response 响应拦截器, 封装 code 状态码拦截机制
+
+- 3. 封装 request 请求信息,  封装请求接口前缀, 封装请求头和超时时间, 封装请求方法 等请求信息...
+
+- 补充知识1: 学会封装对你的开发很有帮助. **按需封装**
+```
+
+``` md
+> 23. 你了解 axios 的原理吗？有看过它的源码吗？
+- 1. ... 待补充
+```
+
+``` md
+> 24. SSR 解决了什么问题？有做过 SSR 吗？你是怎么做的？
+- 1. SSR 服务端渲染, 指由服务端完成页面的 HTML 结构拼接的页面处理技术，发送到浏览器，然后由浏览器为其绑定状态与事件，成为完全可交互页面的过程
+
+- 2. 
+```
+
+``` md
+> 25. 说下你的 vue 项目的目录结构，如果是大型项目你该怎么划分结构和划分组件呢？
+- 1. 项目目录划分原则
+- a. 按语义划分, 文件名和其内部功能要一致.
+
+- b. 单一入口/出口原则, 即一个独立的模块在对外的时候, 只有一个入口/出口.
+
+- c. 就近原则, 根据文件的耦合程度决定文件的位置.
+
+- d. 相对绝对路径原则, 独立模块的内部文件调用使用相对路径, 与其他模块直接使用绝对路径. 
+
+- 2. 目录结构示例
+```
+``` js
+... 待补充
+```
+
+``` md
+> 26. vue 要做权限管理该怎么做？如果控制到按钮级别的权限怎么做？
+- 1. 前端的权限控制:
+- a. 接口权限, 通过验证 token 令牌, 实现接口权限.
+
+- b. 按钮权限, v-if 指令实现.
+
+- c. 页面权限, 由路由权限和菜单权限搭配实现.
+
+- 补充知识1: 权限需要前后端结合，前端尽可能的去控制，更多的需要后台判断.
+```
+
+``` md
+> 27. Vue 项目中你是如何解决跨域的呢？
+- 1. 跨域问题是因为浏览器自身的同源策略导致的. 一定要注意跨域是浏览器的限制，你用抓包工具抓取接口数据，是可以看到接口已经把数据返回回来了，只是浏览器的限制，你获取不到数据。用postman请求接口能够请求到数据。这些再次印证了跨域是浏览器的限制
+
+- 2. 解决跨域
+- a. CORS(Cross-Origin Resource Sharing 跨域资源共享), 它由一系列传输的HTTP头组成，这些HTTP头决定浏览器是否阻止前端 JavaScript 代码获取跨域请求的响应
+
+- b. Proxy(代理), 实现非直接联系, 代理（Proxy）也称网络代理，是一种特殊的网络服务，允许一个（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。一些网关、路由器等网络设备具备网络代理功能。一般认为代理服务有利于保障网络终端的隐私或安全，防止攻击.
+
+- c. JSONP, ... 待补充
+
+- 补充知识1: 同源策略, 协议相同, 主机名相同, 端口号相同. 因此产生跨域, 可能是协议、端口、主机其中至少一项不相同所导致的.
+```
+
+``` md
+> 28. vue3有了解过吗？能说说跟vue2的区别吗？
+- ... 待补充
+```
+
+``` md
+> 29. 
+```
+
+## axios 相关问题
+``` md
+> 1. axios 是什么?
+```
 
 ## 其他问题
 ``` md
